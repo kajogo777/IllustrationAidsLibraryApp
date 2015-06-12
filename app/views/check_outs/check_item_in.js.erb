@@ -1,0 +1,9 @@
+
+<%unless @checkoutid == nil%>
+
+$("#<%=@checkoutid%>").remove();
+
+$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'check_outs/checkinconfirm' , locals: {fine: @fine,late: @late})%>");
+$("#mymodal").modal("show");
+
+<% end %>

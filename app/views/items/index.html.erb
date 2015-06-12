@@ -1,0 +1,65 @@
+<h1>Manage Aids</h1>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+  	<li role="presentation"  class="active">
+      <a href="#crud" aria-controls="crud" role="tab" data-toggle="tab">Create & edit Items</a>
+    </li>
+
+    <li role="presentation" >
+    	<a href="#srchitem" aria-controls="srchitem" role="tab" data-toggle="tab">Search for an Item</a>
+    </li>
+
+    <li role="presentation">
+      <a href="#topi" aria-controls="topi" role="tab" data-toggle="tab">Top Items</a>
+    </li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="crud">
+      <%= render partial: 'items/list_table_items' , locals: { items: @items, nitem: @nitem } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="srchitem">
+
+		<div class="form-group">
+
+           <div class="input-group btn-group">
+
+              <%= form_tag(items_get_item_path, method: "get", remote: true, id: "crud-srch") do %>
+                  
+                  <div class="btn-group">
+                    <div class="btn-group">
+                        <%= text_field_tag(:itemID, nil,class: "form-control", placeholder: "item id") %>
+                    </div>
+                    
+                    <div class="btn-group">             
+                        <%= submit_tag("Get item!",class: "btn btn-default")%>
+                    </div>
+                  
+                  </div>
+
+              <% end %>
+
+            </div>
+        </div>
+
+		<div id="srchItemPos">
+		</div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="topi">
+      <%= render partial: 'items/list_top_items' , locals: { items: @topItems } %>
+    </div>
+    
+  </div>
+
+</div>
+

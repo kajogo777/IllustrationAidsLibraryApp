@@ -1,0 +1,21 @@
+
+$("#notice-location-form").empty();
+$("#notice-location-form").append("<div class='panel' id='notice'><div class='panel-heading' id='noticeh'></div></div>"); 
+ 
+<% if @service == nil %>
+
+	$("#noticeh").append("<div class='panel-title'>Failed: </div><ul id='noticeb'></ul>");
+
+	<% @str.each do |s| %>
+		$("#noticeb").append("<li><%= s %></li>");
+	<% end %>
+	
+<% else %>
+
+	$("#mytable").prepend("<%=escape_javascript(render partial: 'services/record' , locals: {service: @service})%>");
+	$("#noticeh").append("<%= @str %>");
+	//window.location.reload();
+
+<% end %>
+
+$("#notice").addClass("<%= @alert %>");

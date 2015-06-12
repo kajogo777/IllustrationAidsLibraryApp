@@ -1,0 +1,6 @@
+
+<% unless @cur_ser == nil %>
+	$("#srchSerPos").html("<%= escape_javascript(render partial: 'services/mservice', locals: { ser:  @cur_ser } ) %>"); 
+<% else %>
+	$("#srchSerPos").empty(); 
+<% end %>

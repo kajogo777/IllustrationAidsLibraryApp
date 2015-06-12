@@ -1,0 +1,65 @@
+<h1>Manage Aids</h1>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation"  class="active">
+      <a href="#resi" aria-controls="resi" role="tab" data-toggle="tab">Reserved Items</a>
+    </li>
+
+    <li role="presentation">
+      <a href="#chcko" aria-controls="chcko" role="tab" data-toggle="tab">Checked Out Items</a>
+    </li>
+
+    <li role="presentation" >
+      <a href="#chcki" aria-controls="chcki" role="tab" data-toggle="tab">Check In An Item</a>
+    </li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="resi">
+      <%= render partial: 'check_outs/list_checks' , locals: { checks: @checkOutsNR , rel: true } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="chcko">
+      <%= render partial: 'check_outs/list_checks' , locals: { checks: @checkOutsR ,rel: false} %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="chcki">
+
+    <div class="form-group">
+
+           <div class="input-group btn-group">
+
+              <%= form_tag(check_outs_check_item_in_path, method: "get", remote: true, id: "crud-srch") do %>
+                  
+                  <div class="btn-group">
+                    <div class="btn-group">
+                        <%= text_field_tag(:itemID, nil,class: "form-control", placeholder: "item id") %>
+                    </div>
+                    
+                    <div class="btn-group">             
+                        <%= submit_tag("Check In!",class: "btn btn-default")%>
+                    </div>
+                  
+                  </div>
+
+              <% end %>
+
+            </div>
+        </div>
+
+    <div id="prompt">
+    </div>
+
+    </div>
+    
+  </div>
+
+</div>
+

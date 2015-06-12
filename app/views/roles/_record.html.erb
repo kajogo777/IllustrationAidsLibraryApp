@@ -1,0 +1,18 @@
+
+<tr id="record<%=role.id%>">
+  <td><%= role.name %></td>
+  <td><%= role.description %></td>
+
+  <td>
+    <%= render partial: 'roles/form' , locals: {nrole: role, formid: "form-edit#{role.id}", newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=role.id%>">Edit</button>
+  </td>
+
+  <td>
+  	<% if role.people.count == 0 %>
+    <%= button_to 'Delete', role, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
+    <% else %>
+    <%= button_to "Cannot Delete, #{role.people.count} servants linked", role, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger disabled btn-block" %>
+    <% end %>
+  </td>
+</tr>

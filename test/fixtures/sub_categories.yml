@@ -1,0 +1,26 @@
+
+sub1:
+ id: 1
+ name: head
+ category_id: 1
+
+sub2:
+ id: 2
+ name: torso
+ category_id: 1
+
+sub3:
+ id: 3
+ name: feet
+ category_id: 1
+
+sub4:
+ id: 4
+ name: hand
+ category_id: 2
+
+sub5:
+ id: 5
+ name: baton
+ category_id: 2
+

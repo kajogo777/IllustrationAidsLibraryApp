@@ -1,0 +1,30 @@
+<h1>Manage Roles</h1>
+
+<div role="tabpanel" class="tab-pane active" id="crud">
+    <%= render partial: 'roles/list_table_roles' , locals: { roles: @roles, nrole: @nrole } %>
+</div>
+
+<div>
+				<%= form_tag(roles_get_rolpeople_path, method: "get", remote: true, id: "crud-srch") do %>
+                    
+                    <div class="btn-group">
+
+                      <div class="btn-group">
+                          <%= text_field_tag(:rolename, nil,class: "form-control", placeholder: "role name") %>
+                      </div>
+                      
+                      <div class="btn-group">             
+                          <%= submit_tag("Get Servants!",class: "btn btn-default")%>
+                      </div>
+                    
+                    </div>
+
+                <% end %>
+</div>
+
+<div id="rolpeoplepos">
+</div>
+
+    
+
+

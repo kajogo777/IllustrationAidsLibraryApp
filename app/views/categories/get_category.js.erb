@@ -1,0 +1,6 @@
+
+<% unless @cur_cat == nil %>
+	$("#srchCatPos").html("<%= escape_javascript(render partial: 'categories/mcategory', locals: { cat:  @cur_cat, serv: @services } ) %>"); 
+<% else %>
+	$("#srchCatPos").empty(); 
+<% end %>

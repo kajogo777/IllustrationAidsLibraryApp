@@ -1,0 +1,3 @@
+$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'users/resconfirm' , locals: {res: @res})%>");
+$("#mymodal").modal("show");
+$("#reserve<%=@res.item.id%>").addClass("disabled");

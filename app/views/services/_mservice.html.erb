@@ -1,0 +1,107 @@
+<% unless ser.blank? %>
+
+	<div class="thumbnail">
+			<div class="caption">
+
+				<% unless ser.sub_name == nil || ser.sub_name == "" %>
+					<h3><%= ser.name.split.map(&:capitalize).join(' ') %>  <%= ser.sub_name.split.map(&:capitalize).join(' ') %></h3>
+				<% else %>
+					<h3><%= ser.name.split.map(&:capitalize).join(' ') %></h3>
+				<% end %>
+
+			</div>
+
+
+			<% unless @servants.blank? %>
+			<div class="caption">
+				<br>
+				<br>
+				<strong>Servants</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>Name</th>
+					      	<th>Contacts</th>
+					      	<th>Address</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @servants.each do |servant| %>
+								<tr>
+							      	<td><%= servant.get_full_name %></td>
+							      	<td><%= simple_format(servant.get_all_contacts) %></td>
+							      	<td><%= servant.get_full_address %></td>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+
+			<% unless @subCategories.blank? %>
+			<div class="caption">
+				<br>
+				<br>
+				<strong>Top Sub Categories</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>Name</th>
+					      	<th>Description</th>
+					      	<th>Check In Frequency</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @subCategories.each do |sub| %>
+								<tr>
+							      	<td><%= sub.name %></td>
+							      	<td><%= sub.description %></td>
+							      	<td><%= sub.checkins_count %></td>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+
+			<% unless @items.blank? %>
+			<div class="caption">
+				<br>
+				<br>
+				<strong>Top Items</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>ID</th>
+					      	<th>Description</th>
+					      	<th>Condition</th>
+					      	<th>Category</th>
+					      	<th>Sub Category</th>
+					      	<th>Check In Frequency</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @items.each do |i| %>
+								<tr>
+							      	<th><%= i.id %></th>
+							      	<th><%= i.description %></th>
+							      	<th><%= i.condition %></th>
+							      	<th><%= Category.find(i.category_id).name %></th>
+							      	<th><%= SubCategory.find(i.sub_category_id).name unless i.sub_category_id == nil || i.sub_category_id == 0 %></th>
+							      	<th><%= i.check_ins_count %></th>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+
+	</div>
+	
+<% end %>

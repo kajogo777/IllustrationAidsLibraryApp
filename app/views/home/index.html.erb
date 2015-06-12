@@ -1,0 +1,35 @@
+<blockquote>
+<h1> Illustration Aids </h1>
+<p id="verse"></p>
+<footer ><cite id="author"></cite></footer>
+</blockquote>
+
+<% unless @items == nil %>
+	<% unless @search_tags.count == 0 %>
+		<div class="panel panel-success">
+			<div class="panel-heading">Found 
+				<span class="badge"><%= @items.count %></span>
+				 items for tags:</div>
+		  	<div class="panel-body">
+				<% @search_tags.each do |s| %>
+				<span class="label label-success"><%= s %></span>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<div class="panel panel-success">
+			<div class="panel-heading">Found 
+				<span class="badge"><%= @items.count %></span>
+				 items
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+
+
+<%= render partial: 'home/listitems' , locals: { items: @items }%>
+
+
+
+

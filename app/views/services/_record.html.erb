@@ -1,0 +1,18 @@
+
+<tr id="record<%=service.id%>">
+  <td><%= service.name %></td>
+  <td><%= service.sub_name %></td>
+
+  <td>
+    <%= render partial: 'services/form' , locals: {nservice: service, formid: "form-edit#{service.id}", newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=service.id%>">Edit</button>
+  </td>
+
+  <td>
+  	<% if service.people.count == 0 %>
+    <%= button_to 'Delete', service, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
+    <% else %>
+    <%= button_to "Cannot Delete, #{service.people.count} servants linked", service, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger disabled btn-block" %>
+    <% end %>
+  </td>
+</tr>

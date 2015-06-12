@@ -1,0 +1,13 @@
+
+
+
+$("#form-subcat<%=@tagid%>").empty();
+
+<% unless @subs.empty? %>
+
+	$("#form-subcat<%=@tagid%>").html("<%=escape_javascript(label_tag "Subcategory")%><br><%=escape_javascript( 
+		collection_select(:item, :sub_category_id , @subs, :id, :name, include_blank: 'none')
+		 )%>");
+
+<% end %>
+

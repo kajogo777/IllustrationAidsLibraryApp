@@ -1,0 +1,6 @@
+
+<% unless @cur_item == nil %>
+	$("#srchItemPos").html("<%= escape_javascript(render partial: 'items/mitem', locals: { itm:  @cur_item, serv: @services } ) %>"); 
+<% else %>
+	$("#srchItemPos").empty(); 
+<% end %>

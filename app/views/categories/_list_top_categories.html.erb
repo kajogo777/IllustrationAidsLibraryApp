@@ -1,0 +1,32 @@
+
+<% unless categories == nil %>
+
+	<% categories.in_groups_of(4,false).each do |group| %>
+		<div class="row">
+			<% group.each do |category| %>
+				<div class="col-sm-6 col-md-3">
+				    <div class="thumbnail">
+				    	<span class="badge"><%= category.checkins_count %> Check ins</span> 
+				      <div class="caption">
+				        <h3><%= category.name %></h3>
+				        <%= label_tag 'Description:' %>
+				        <p><%= category.description %></p>
+				        <p>
+				        	<%= label_tag 'Subcategories:' %>
+				        	<p>
+					        	<% SubCategory.where(category_id: category.id).each do |sub| %>
+					        	<span class="label label-primary"><%= sub.name %></span>
+					        	<% end %>
+				        	</p>
+				        </p>
+				      </div>
+				    </div>
+			  	</div>
+		  <% end %>
+		</div>
+	<% end %>
+<% else %>
+
+emptyyyyyy
+
+<% end %>

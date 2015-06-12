@@ -1,0 +1,26 @@
+
+$("#notice-location-form").empty();
+$("#notice-location-form").append("<div class='panel' id='notice'><div class='panel-heading' id='noticeh'></div></div>"); 
+ 
+<% if @person == nil %>
+
+	$("#noticeh").append("<div class='panel-title'>Failed: </div><ul id='noticeb'></ul>");
+
+	<% @str.each do |s| %>
+		$("#noticeb").append("<li><%= s %></li>");
+	<% end %>
+	
+<% else %>
+
+	$("#mytable").prepend("<%=escape_javascript(render partial: 'people/record' , locals: {person: @person})%>");
+	$("#noticeh").append("<%= @str %>");
+	//window.location.reload();
+
+	$('[data-toggle="popovert"]').popover({
+        html: true,
+        trigger: 'hover'
+    });
+
+<% end %>
+
+$("#notice").addClass("<%= @alert %>");

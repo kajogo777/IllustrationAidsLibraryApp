@@ -1,0 +1,77 @@
+<h1>Manage Servants</h1>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation"  class="active">
+      <a href="#crud" aria-controls="crud" role="tab" data-toggle="tab">Create & edit Servants</a>
+    </li>
+
+    <li role="presentation" >
+      <a href="#srchitem" aria-controls="srchitem" role="tab" data-toggle="tab">Search for a Servant</a>
+    </li>
+
+    <li role="presentation">
+      <a href="#topc" aria-controls="topi" role="tab" data-toggle="tab"></a>
+    </li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="crud">
+      <%= render partial: 'people/list_table_people' , locals: { people: @people, nperson: @nperson } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="srchitem">
+
+      <div class="form-group">
+
+             <div class="input-group btn-group">
+
+                <%= form_tag(people_get_person_path, method: "get", remote: true, id: "crud-srch") do %>
+                    
+                    <div class="btn-group btn-block">
+                      <div class="btn-group btn-block">
+                          <%= text_field_tag(:searchNatID, nil,class: "form-control", placeholder: "national id") %>
+                      </div>
+                      <div class="btn-group btn-block">
+                          <%= text_field_tag(:searchMob, nil,class: "form-control", placeholder: "mobile number") %>
+                      </div>
+                      <div class="btn-group btn-block">
+                          <%= text_field_tag(:searchFirst, nil,class: "form-control", placeholder: "first name") %>
+                      </div>
+                      <div class="btn-group btn-block">
+                          <%= text_field_tag(:searchMidd, nil,class: "form-control", placeholder: "middle name") %>
+                      </div>
+                      <div class="btn-group btn-block">
+                          <%= text_field_tag(:searchLast, nil,class: "form-control", placeholder: "last name") %>
+                      </div>
+                      
+                      <div class="btn-group btn-block">             
+                          <%= submit_tag("Get servant!",class: "btn btn-default")%>
+                      </div>
+                    
+                    </div>
+
+                <% end %>
+
+              </div>
+          </div>
+
+      <div id="srchPersonPos">
+      </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="topc">
+      
+    </div>
+    
+  </div>
+
+</div>
+

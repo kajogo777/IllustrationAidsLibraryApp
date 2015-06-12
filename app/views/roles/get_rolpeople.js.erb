@@ -1,0 +1,9 @@
+<% unless @people == nil %>
+	$("#rolpeoplepos").html("<%= escape_javascript(render partial: 'roles/list_servants', locals: { people: @people } ) %>"); 
+	$('[data-toggle="popovert"]').popover({
+        html: true,
+        trigger: 'hover'
+    });
+<% else %>
+	$("#rolpeoplepos").empty(); 
+<% end %>

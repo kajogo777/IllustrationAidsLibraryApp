@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ST Mary Rehab Church</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :modernizr %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<%= render partial: 'layouts/navbar'%>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-9">
+
+					<% unless notice == nil %>
+					<div class='panel panel-info'><div class='panel-heading'><div class='panel-title'><%= notice %></div></div></div>
+					<% end %>
+					<% unless alert == nil %>
+					<div class='panel panel-danger'><div class='panel-heading'><div class='panel-title'><%= alert %></div></div></div>
+					<% end %>
+
+					<div id="msgmodal"></div>
+
+					<%= yield %>
+
+				</div>
+
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	
+</body>
+</html>

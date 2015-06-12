@@ -1,0 +1,65 @@
+<h1>Manage Categories</h1>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation"  class="active">
+      <a href="#crud" aria-controls="crud" role="tab" data-toggle="tab">Create & edit Categories</a>
+    </li>
+
+    <li role="presentation" >
+      <a href="#srchitem" aria-controls="srchitem" role="tab" data-toggle="tab">Search for a Category</a>
+    </li>
+
+    <li role="presentation">
+      <a href="#topc" aria-controls="topi" role="tab" data-toggle="tab">Top Categories</a>
+    </li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="crud">
+      <%= render partial: 'categories/list_table_categories' , locals: { categories: @categories, ncategory: @ncategory } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="srchitem">
+
+      <div class="form-group">
+
+             <div class="input-group btn-group">
+
+                <%= form_tag(categories_get_category_path, method: "get", remote: true, id: "crud-srch") do %>
+                    
+                    <div class="btn-group">
+                      <div class="btn-group">
+                          <%= text_field_tag(:catName, nil,class: "form-control", placeholder: "category name") %>
+                      </div>
+                      
+                      <div class="btn-group">             
+                          <%= submit_tag("Get category!",class: "btn btn-default")%>
+                      </div>
+                    
+                    </div>
+
+                <% end %>
+
+              </div>
+          </div>
+
+      <div id="srchCatPos">
+      </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="topc">
+      <%= render partial: 'categories/list_top_categories' , locals: { categories: @topCategories } %>
+    </div>
+    
+  </div>
+
+</div>
+

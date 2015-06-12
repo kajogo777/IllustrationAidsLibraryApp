@@ -1,0 +1,21 @@
+<% unless tag == nil %>
+
+	<div class="thumbnail">
+			<div class="caption">
+					        <h3><%= tag.name %></h3>
+					        			        	
+				<% unless serv.empty? %>
+					<div>
+						<strong>Services:</strong>
+						<br>
+						<ul class="list-group">
+							<% serv.each do |s| %>
+							  <li class="list-group-item"><%= s.name %>  <%= s.sub_name %>  <span class="badge"><%= s.checkins %> Points</span></li>
+						 	<% end %>
+						</ul>
+					</div>
+				<% end %>
+			</div>
+	</div>
+	
+<% end %>

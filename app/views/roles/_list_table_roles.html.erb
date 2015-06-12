@@ -1,0 +1,33 @@
+
+
+<div id="create-form" linkto="<%=roles_close_new_modal_path%>">
+
+  
+  <div class="btn-group pull-right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#role-form">Add New Role</button>
+  </div>
+
+  <%= render partial: 'roles/form' , locals: {nrole: nrole, formid: "role-form" , newform: true} %>
+
+</div>
+
+<br><br>
+
+<div class="table-responsive">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody id="mytable">
+      <% roles.each do |role| %>
+        <%= render partial: 'roles/record' , locals: {role: role} %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

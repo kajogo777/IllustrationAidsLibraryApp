@@ -1,0 +1,23 @@
+
+<tr id="record<%=item.id%>">
+  <td><%= item.id %></td>
+  <td><%= item.name %></td>
+  <td><%= item.description %></td>
+  <td><%= item.cost %></td>
+  <td><%= item.condition %></td>
+  <td><%= item.category.name %></td>
+  <td><%= item.sub_category.name unless item.sub_category == nil%></td>
+
+  <td>
+    <button class="btn btn-default pull-right active btn-block" data-toggle="popover" data-img="<%= item.photo_url.to_s if item.photo?%>">Show</button>
+  </td>
+
+  <td>
+    <%= render partial: 'items/form' , locals: {nitem: item, formid: "form-edit#{item.id}", tagid: item.id, newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=item.id%>">Edit</button>
+  </td>
+
+  <td>
+    <%= button_to 'Delete', item, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
+  </td>
+</tr>

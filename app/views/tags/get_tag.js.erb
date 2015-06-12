@@ -1,0 +1,6 @@
+
+<% unless @cur_tag == nil %>
+	$("#srchTagPos").html("<%= escape_javascript(render partial: 'tags/mtag', locals: { tag:  @cur_tag, serv: @services } ) %>"); 
+<% else %>
+	$("#srchTagPos").empty(); 
+<% end %>

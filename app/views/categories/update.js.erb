@@ -1,0 +1,22 @@
+
+$("#notice-location-form-edit<%= @catid %>").empty();
+$("#notice-location-form-edit<%= @catid %>").append("<div class='panel' id='notice<%= @catid %>'><div class='panel-heading' id='noticeh<%= @catid %>'></div></div>"); 
+ 
+<% if @category == nil %>
+
+	$("#noticeh<%= @catid %>").append("<div class='panel-title'>Failed: </div><ul id='noticeb<%= @catid %>'></ul>");
+
+	<% @str.each do |s| %>
+		$("#noticeb<%= @catid %>").append("<li><%= s %></li>");
+	<% end %>
+	
+	$("#notice<%= @catid %>").addClass("<%= @alert %>");
+<% else %>
+
+	$("#record<%=@category.id%>").replaceWith("<%=escape_javascript(render partial: 'categories/record' , locals: {category: @category})%>");
+	//$("#noticeh<%= @catid %>").append("<%= @str %>");
+
+	alert("<%= @str %>");
+<% end %>
+
+

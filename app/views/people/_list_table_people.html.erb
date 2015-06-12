@@ -1,0 +1,58 @@
+
+
+<div id="create-form" linkto="<%=people_close_new_modal_path%>">
+
+  
+  <div class="btn-group pull-right">
+
+    <%= link_to "Download Servants List", people_get_pdf_path, :class => "btn btn-default" %>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#person-form">Add New Servant</button>
+    
+  </div>
+
+  <%= render partial: 'people/form' , locals: {nperson: nperson, formid: "person-form", newform: true} %>
+
+</div>
+
+<br><br>
+
+<div class="table-responsive">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <strong>Sort By: </strong>
+          <span class="btn btn-default" ><%= sortable 'addressA','Address A', people_path %></span>
+          <span class="btn btn-default" ><%= sortable 'addressB','Address B', people_path %></span> 
+          <span class="btn btn-default" ><%= sortable 'addressC','Address C', people_path %></span> 
+          <span class="btn btn-default" ><%= sortable 'addressD','Address D', people_path %></span>
+          <span class="btn btn-default" ><%= sortable 'first_name','First Name', people_path %></span> 
+          <span class="btn btn-default" ><%= sortable 'middle_name','Middle Name', people_path %></span>
+          <span class="btn btn-default" ><%= sortable 'last_name','Last Name', people_path %></span> 
+          <span class="btn btn-default" ><%= sortable 'mobile_number1','Mobile Number', people_path %></span>
+          <span class="btn btn-default" ><%= sortable 'mobile_number2','Mobile Number2', people_path %></span>
+          <span class="btn btn-default" ><%= sortable 'phone_number','Phone Number', people_path %></span> 
+      </tr>
+
+      <tr>
+        <th><%= sortable 'nationalid','National ID', people_path %></th>
+        <th>Full Name</th>
+        <th><%= sortable 'birth_date','Birth Date', people_path %></th>
+        <th>Address</th>
+        <th>Contacts</th>
+        <th><%= sortable 'role.name','Role', people_path %></th>
+        
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody id="mytable">
+      <% people.each do |person| %>
+        <%= render partial: 'people/record' , locals: {person: person} %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <%= will_paginate people, renderer: BootstrapPagination::Rails %>
+  <br>
+</div>

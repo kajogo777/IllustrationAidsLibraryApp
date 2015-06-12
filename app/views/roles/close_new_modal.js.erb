@@ -1,0 +1,3 @@
+$("#create-form").empty();
+$("#create-form").append("<div class='btn-group pull-right'><button class='btn btn-primary' data-toggle='modal' data-target='#role-form'>Add New Role</button></div>");
+$("#create-form").append("<%= escape_javascript(render partial: 'roles/form' , locals: {nrole: @nrole, formid: 'role-form', newform: true})%>");

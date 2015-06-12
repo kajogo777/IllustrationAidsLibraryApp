@@ -1,0 +1,112 @@
+
+<div class="modal fade" id="<%=formid%>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close create-form-close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">New Servant!</h4>
+        </div>
+
+
+<%= form_for(nperson, html: { multipart: true}, remote: true) do |f| %>
+
+        <div class="modal-body">
+
+          <div class="field">
+            <%= f.label :nationalid, 'National Id' %>
+            <%= f.text_field :nationalid , class: "btn-block"%>
+          </div>
+
+          <br>
+
+          <div class="field">
+            <%= f.label :first_name, 'First Name' %>
+            <%= f.text_field :first_name, class: "btn-block" %>
+          </div>
+
+          <br>
+
+          <div class="field">
+            <%= f.label :middle_name, 'Middle Name' %>
+            <%= f.text_field :middle_name, class: "btn-block" %>
+          </div>
+
+          <br>
+
+          <div class="field">
+            <%= f.label :last_name, 'Last Name' %>
+            <%= f.text_field :last_name, class: "btn-block" %>
+          </div>
+
+          <br>
+
+          <div class="field">
+            <%= f.label :addressA , 'Address A'%>
+            <%= f.text_field :addressA%>
+          </div>
+
+          <div class="field">
+            <%= f.label :addressB , 'Address B'%>
+            <%= f.text_field :addressB%>
+          </div>
+
+          <div class="field">
+            <%= f.label :addressC , 'Address C'%>
+            <%= f.text_field :addressC%>
+          </div>
+
+          <div class="field">
+            <%= f.label :addressD , 'Address D'%>
+            <%= f.text_field :addressD%>
+          </div>
+
+          <br>
+
+          <div class="field">
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number, class: "btn-block" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :mobile_number1 %>
+            <%= f.text_field :mobile_number1, class: "btn-block" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :mobile_number2 %>
+            <%= f.text_field :mobile_number2, class: "btn-block" %>
+          </div>
+
+          <br>
+
+          <% if current_user.person.role.name != "SuperAdmin" && nperson.role != nil && (nperson.role.name == "Admin" || nperson.role.name == "SuperAdmin") %>
+
+          <% else%>
+
+            <div class="field">
+              <% roleCol = Role.all %>
+              <% roleCol = roleCol.where("name != ? AND name != ?", "Admin", "SuperAdmin") unless current_user.person.role.name == "SuperAdmin" %>
+              <%= f.label :role_id %><br>
+              <%= f.collection_select(:role_id, roleCol, :id, :name) %>
+            </div>
+
+          <% end %>
+
+          <br>    
+
+        </div>
+
+        <div id="notice-location-form<%= ('-edit' + nperson.id.to_s) unless newform  %>">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default create-form-close" data-dismiss="modal" >Close</button>
+          <%= f.submit(class: "btn btn-primary") %>
+        </div>
+
+<% end %>
+
+</div>
+    </div>
+  </div>

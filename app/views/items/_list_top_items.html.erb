@@ -1,0 +1,33 @@
+
+<% unless items == nil %>
+
+	<% items.in_groups_of(4,false).each do |group| %>
+		<div class="row">
+			<% group.each do |item| %>
+				<div class="col-sm-6 col-md-3">
+				    <div class="thumbnail">
+				    	<span class="badge"><%= item.checkins_count %> Check ins</span> 
+				      <%= image_tag item.photo_url.to_s %>
+				      <div class="caption">
+				        <h3><%= item.name %></h3>
+				        <%= label_tag 'Description:' %>
+				        <p><%= item.description %></p>
+				        <p><% cat = item.category %></p>
+				        <%= label_tag 'Category:' %>
+				        <p><%= cat.name %></p>
+				        <p>
+				        	<%= label_tag 'Subcategory:' %>
+				        	<p>
+					        	<% unless item.sub_category == nil %>
+					        	<%= item.sub_category.name %>
+					        	<% end %>
+				        	</p>
+				        </p>
+				      </div>
+				    </div>
+			  	</div>
+		  <% end %>
+		</div>
+	<% end %>
+
+<% end %>

@@ -1,0 +1,30 @@
+
+<tr id="record<%=person.id%>">
+
+  <td><%= person.nationalid %></td>
+
+  <td><%=person.get_full_name%></td>
+
+  <td><%= person.birth_date %></td>
+
+  <td><span class="label label-info glyphicon glyphicon-asterisk" data-toggle="popovert" data-content="<%=person.get_full_address%>"> </span></td>
+  
+  <td><span class="label label-info glyphicon glyphicon-asterisk" data-toggle="popovert" data-content="<%=simple_format(person.get_all_contacts)%>"> </span></td>
+
+  <td><%= person.role.name %></td>
+
+  <td>
+    <%= render partial: 'people/form' , locals: {nperson: person, formid: "form-edit#{person.id}", newform: false} %>
+
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=person.id%>">Edit</button>
+  </td>
+
+  <td>
+    <% if current_user.person.role.name != "SuperAdmin" && (person.role.name == "Admin" || person.role.name == "SuperAdmin") %>
+      <%= button_to 'Cannot Delete', person, remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-block disabled" %>
+    <% else %>
+      <%= button_to 'Delete', person, remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-block" %>
+    <% end %>
+
+  </td>
+</tr>

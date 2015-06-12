@@ -1,0 +1,135 @@
+<% unless person == nil %>
+
+	<div class="thumbnail">
+			<div class="caption">
+
+				<h3><%= person.get_full_name %></h3>
+				<br>
+
+				<h3><%= person.nationalid %></h3>
+				<br>
+
+				<h3><%= person.birth_date %></h3>
+				<br>
+
+				<h3><%= person.get_full_address %></h3>
+				<br>
+
+				<h3>
+					Phone: <%= person.phone_number %>
+					<br>
+					<br>
+					Mobile: <%= person.mobile_number1 %>
+
+					<% unless person.mobile_number2 == "" || person.mobile_number2 == nil %>
+					<br>
+					<br>
+						Mobile2: <%= person.mobile_number2 %>
+					<% else %>
+					<% end %>
+				</h3>
+				<br>
+
+				<h3><%= person.role.name %></h3>
+				<br>				        				        			        	
+			</div>
+
+			<!-- TODO checkins, checkouts, topitems, late checkouts, late checkins -->
+
+			<% unless @checkOuts.blank? %>
+			<div class="caption">
+				<strong>Checked Out</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>ID</th>
+					      	<th>Created at</th>
+					      	<th>Check Out Date</th>
+					      	<th>Deadline Date</th>
+					      	<th>Item ID</th>
+					      	<th>Released</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @checkOuts.each do |checkout| %>
+								<tr>
+							      	<td><%= checkout.id %></td>
+							      	<td><%= checkout.created_at %></td>
+							      	<td><%= checkout.check_out_date %></td>
+							      	<td><%= checkout.deadline_date %></td>
+							      	<td><%= checkout.item.id %></td>
+							      	<td><%= checkout.released %></td>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+
+			<% unless @lateCheckIns.blank? %>
+			<div class="caption">
+				<strong>Late Check Ins</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>ID</th>
+					      	<th>Created at</th>
+					      	<th>Item ID</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @lateCheckIns.each do |checkin| %>
+								<tr>
+							      	<td><%= checkin.id %></td>
+							      	<td><%= checkin.created_at %></td>
+							      	<td><%= checkin.item.id %></td>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+
+			<% unless @topItems.blank? %>
+			<div class="caption">
+				<strong>Top Items</strong>
+				<div class="table-responsive">
+				    <table class="table table-hover table-condensed">
+					    <thead>
+					      <tr>
+					      	<th>ID</th>
+					      	<th>Frequency</th>
+					      	<th>Description</th>
+					      	<th>Category</th>
+					      	<th>SubCategory</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+							<% @topItems.each do |item| %>
+								<tr>
+							      	<td><%= item.id %></td>
+							      	<td><%= item.check_ins_count %></td>
+							      	<td><%= item.description %></td>
+							      	<td>
+							      		<%= Category.find(item.category_id).name %>
+							      	</td>
+							      	<td>
+							      		<% unless item.sub_category_id == nil %>
+							      			<%= SubCategory.find(item.sub_category_id).name %>
+							      		<% else %>
+							      		<% end %>
+							      	</td>
+						        </tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<% end %>
+	</div>
+	
+<% end %>

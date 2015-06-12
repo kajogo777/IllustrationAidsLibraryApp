@@ -1,0 +1,15 @@
+
+<tr id="record<%=tag.id%>">
+  <td><%= tag.name %></td>
+
+  <td>
+    <%= render partial: 'tags/form' , locals: {ntag: tag, formid: "form-edit#{tag.id}", newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=tag.id%>">Edit</button>
+  </td>
+
+  <td>
+
+    <%= button_to 'Delete', tag, remote: true, method: :delete, data: {confirm: "this tag is linked to #{tag.items.count} items! Are you sure?"}, class: "btn btn-danger btn-block" %>
+
+  </td>
+</tr>

@@ -1,0 +1,14 @@
+<tr id="<%=chk.id%>">
+						      	<td><%= chk.person.get_full_name %></td>
+						      	<td><%= chk.item.id %></td>
+						      	<td><%= chk.check_out_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+						      	<td><%= chk.deadline_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+						      	<td><%= (chk.deadline_date.to_datetime - chk.check_out_date.to_datetime).to_i %></td>
+						      	<% if rel %>
+						      		<td>
+						      			<%= form_tag(check_outs_release_path(releaseCheckID: chk.id), method: "get", remote: true) do %>
+							        	 <%= submit_tag("Release Item",class: "btn btn-default")%>
+							        	<% end %>
+						      		</td>
+						      	<% end %>
+</tr>

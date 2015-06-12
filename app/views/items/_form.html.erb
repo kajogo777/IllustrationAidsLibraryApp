@@ -1,0 +1,85 @@
+
+<div class="modal fade" id="<%=formid%>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close create-form-close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">New Item!</h4>
+        </div>
+
+
+<%= form_for(nitem, html: { multipart: true}, remote: true) do |f| %>
+
+        <div class="modal-body">
+
+          <div class="field">
+            <%= f.label :photo %><br>
+            <%= f.file_field :photo %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :description %><br>
+            <%= f.text_area :description %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :cost %><br>
+            <%= f.number_field :cost %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :condition %><br>
+            <%= f.select(:condition, options_for_select([["Ok","OK"],["Maintenance","MAINTENANCE"],["Lost","LOST"]],"OK")) %>
+          </div>
+          <br>
+          
+            <div id="asd<%=tagid%>" class="field" linkto="<%=items_get_sub_path%>">
+              <%= f.label :category_id %><br>
+              <%= f.collection_select :category_id, Category.all, :id, :name ,{prompt: true} ,
+              onChange: "
+                $.ajax({
+                  url: $('#asd#{tagid}').attr('linkto')
+                  ,data: { cat_id: $('#asd#{tagid} #item_category_id').val(), tagid: #{tagid}}
+                  ,dataType: 'script'
+                });
+              "%>
+            </div>
+            <br>
+
+            <div class="field" id="form-subcat<%=tagid%>">
+
+              <% unless tagid == 0 %>
+                <%=label_tag "Subcategory"%>
+                <br>
+                <%=f.collection_select(:sub_category_id , nitem.category.sub_categories,:id, :name, include_blank: 'none')%>
+              <% end %>
+
+            </div>
+
+          <br>
+          <div class="field">
+            <%= label_tag "Tags" %>
+            <%= f.collection_select :tag_ids, @tags, :id, :name, {}, {:multiple => true, class: "input-lg"} %>
+          </div>
+        </div>
+
+
+        <div id="notice-location-form<%= ('-edit' + nitem.id.to_s) unless newform  %>">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default create-form-close" data-dismiss="modal" >Close</button>
+          <%= f.submit(class: "btn btn-primary") %>
+        </div>
+
+<% end %>
+
+</div>
+    </div>
+  </div>

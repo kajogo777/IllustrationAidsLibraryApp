@@ -1,0 +1,13 @@
+<% unless subcategories == nil %>
+
+<button id="b2" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">Subcategory</button>
+<ul id="search-subcat" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+
+  <li role="presentation"><a value="0" role="menuitem" tabindex="-1">All subcategories</a></li>
+  <% subcategories.each do |s| %>
+  <li role="presentation"><a value="<%=s.id%>" role="menuitem" tabindex="-1"><%=s.name%></a></li>
+  <% end %>
+
+</ul>
+
+<% end %>

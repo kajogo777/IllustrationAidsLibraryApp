@@ -1,0 +1,42 @@
+
+
+<div id="create-form" linkto="<%=items_close_new_modal_path%>">
+
+  
+  <div class="btn-group pull-right">
+    <%= link_to "Download Items List", items_get_pdf_path, :class => "btn btn-default" %>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#item-form">Add New Item</button>
+  </div>
+
+  <%= render partial: 'items/form' , locals: {nitem: nitem, formid: "item-form", tagid: 0,newform: true} %>
+
+</div>
+
+<br><br>
+
+<div class="table-responsive">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th><%= sortable 'id','ID', items_path %></th>
+        <th><%= sortable 'name','Name', items_path %></th>
+        <th>Description</th>
+        <th><%= sortable 'cost','Cost', items_path %></th>
+        <th><%= sortable 'condition','Condition', items_path %></th>
+        <th><%= sortable 'categories.name','Category', items_path %></th>
+        <th>Sub category</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody id="mytable">
+      <% items.each do |item| %>
+        <%= render partial: 'items/record' , locals: {item: item} %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate items, renderer: BootstrapPagination::Rails %>
+
+  <br>
+</div>

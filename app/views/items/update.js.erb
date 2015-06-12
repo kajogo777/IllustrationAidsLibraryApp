@@ -1,0 +1,34 @@
+
+$("#notice-location-form-edit<%= @itmid %>").empty();
+$("#notice-location-form-edit<%= @itmid %>").append("<div class='panel' id='notice<%= @itmid %>'><div class='panel-heading' id='noticeh<%= @itmid %>'></div></div>"); 
+ 
+<% if @item == nil %>
+
+	$("#noticeh<%= @itmid %>").append("<div class='panel-title'>Failed: </div><ul id='noticeb<%= @itmid %>'></ul>");
+
+	<% @str.each do |s| %>
+		$("#noticeb<%= @itmid %>").append("<li><%= s %></li>");
+	<% end %>
+
+	$("#notice<%= @itmid %>").addClass("<%= @alert %>");
+	
+<% else %>
+
+	$("#record<%=@item.id%>").replaceWith("<%=escape_javascript(render partial: 'items/record' , locals: {item: @item})%>");
+	//$("#noticeh<%= @itmid %>").append("<%= @str %>");
+
+	 $('[data-toggle="popover"]').popover({
+        html: true,
+        trigger: 'hover',
+        content: function () {
+          return '<img src="'+$(this).data('img') + '" />';
+        }
+      });
+
+	alert("<%= @str %>");
+
+	//window.location.reload();
+
+<% end %>
+
+

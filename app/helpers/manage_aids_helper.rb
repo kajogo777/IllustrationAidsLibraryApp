@@ -1,0 +1,2 @@
+module ManageAidsHelper
+end

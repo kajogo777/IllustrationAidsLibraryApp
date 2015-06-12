@@ -1,0 +1,21 @@
+<fieldset>
+    <div class="thumbnail">  
+            <%= f.label :name %>
+            <br>
+            <%= f.text_field :name %>
+
+            
+            <br>
+                 
+            <%= f.label :description %>
+            <br>
+            <%= f.text_field :description %>
+
+            <br>
+
+            <%= f.check_box :_destroy ,class: "remove_fields"%>
+            <%= f.label :destroy , "Remove SubCategory"%>
+
+            <br>
+    </div>
+</fieldset>

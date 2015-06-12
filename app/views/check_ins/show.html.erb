@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @check_in.item_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @check_in.person_id %>
+</p>
+
+<p>
+  <strong>On deadline:</strong>
+  <%= @check_in.on_deadline %>
+</p>
+
+<%= link_to 'Back', check_ins_path %>

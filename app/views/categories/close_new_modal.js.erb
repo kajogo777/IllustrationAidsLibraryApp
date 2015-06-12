@@ -1,0 +1,3 @@
+$("#create-form").empty();
+$("#create-form").append("<div class='btn-group pull-right'><%= escape_javascript(link_to 'Download Categories List', categories_get_pdf_path, :class => 'btn btn-default') %><button class='btn btn-primary' data-toggle='modal' data-target='#category-form'>Add New Category</button></div>");
+$("#create-form").append("<%= escape_javascript(render partial: 'categories/form' , locals: {ncategory: @ncategory, formid: 'category-form', newform: true})%>");

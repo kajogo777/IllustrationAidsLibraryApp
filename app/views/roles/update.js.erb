@@ -1,0 +1,22 @@
+
+$("#notice-location-form-edit<%= @rolid %>").empty();
+$("#notice-location-form-edit<%= @rolid %>").append("<div class='panel' id='notice<%= @rolid %>'><div class='panel-heading' id='noticeh<%= @rolid %>'></div></div>"); 
+ 
+<% if @role == nil %>
+
+	$("#noticeh<%= @rolid %>").append("<div class='panel-title'>Failed: </div><ul id='noticeb<%= @rolid %>'></ul>");
+
+	<% @str.each do |s| %>
+		$("#noticeb<%= @rolid %>").append("<li><%= s %></li>");
+	<% end %>
+	
+	$("#notice<%= @rolid %>").addClass("<%= @alert %>");
+<% else %>
+
+	$("#record<%=@role.id%>").replaceWith("<%=escape_javascript(render partial: 'roles/record' , locals: {role: @role})%>");
+	//$("#noticeh<%= @rolid %>").append("<%= @str %>");
+
+	alert("<%= @str %>");
+<% end %>
+
+

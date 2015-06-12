@@ -1,0 +1,17 @@
+
+
+cat1:
+ id: 1
+ name: Clothes
+
+cat2:
+ id: 2
+ name: Puppets
+
+cat3:
+ id: 3
+ name: Posters
+
+cat4:
+ id: 4
+ name: Videos

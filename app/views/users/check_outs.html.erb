@@ -1,0 +1,102 @@
+<div class="panel panel-primary">
+
+ 
+ <% unless @reserved.blank? %>
+ <div class="panel-heading"><strong>Reserved Items</strong></div>
+						<% @reserved.each do |chk| %>
+							<div  id="res<%=chk.id%>" class="thumbnail row" style="border-color: #000000; box-shadow: 5px 5px 10px #888888;">
+							      <div class="caption col-md-6">
+							        <h3><%= chk.item.name %></h3>
+							        <%= label_tag 'Description:' %>
+							        <p><%= chk.item.description %></p>
+							        <p><% cat = chk.item.category %></p>
+							        <%= label_tag 'Category:' %>
+							        <p><%= cat.name %></p>
+							        <p>
+							        	<%= label_tag 'Subcategory:' %>
+							        	<p>
+								        	<% unless chk.item.sub_category == nil %>
+								        	<%= chk.item.sub_category.name %>
+								        	<% end %>
+							        	</p>
+							        </p>
+							        <p>
+							        	<%= label_tag 'Tags:' %>
+							        	<% chk.item.tags.each do |s| %>
+											<span class="label label-info"><%= s.name %></span>
+										<% end %>
+							        </p>
+							        <p>
+							          <strong>Pick Up Date</strong>
+							          <%= chk.check_out_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>
+							        </p>
+							        <p>
+							          <strong>Return Date</strong>
+							          <%= chk.deadline_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>
+							        </p>
+							        <p>
+							          <strong>Duration</strong>
+							          <%= (chk.deadline_date.to_datetime - chk.check_out_date.to_datetime).to_i %>
+							        </p>
+							        <p>
+							        	<%= form_tag(users_cancel_check_out_path(cancelCheckID: chk.id), method: "get", remote: true) do %>
+							        	 <%= submit_tag("Cancel reservation",class: "btn btn-default btn-block")%>
+							        	<% end %>
+							        </p>
+							    </div>
+							    <div class="">
+							      <%= image_tag chk.item.photo_url.to_s %>
+							  	</div>
+							</div>
+						<% end %>
+				
+<% else %>
+<div class="panel-heading"><strong>No Reserved Items</strong></div>
+<% end %>
+</div>
+
+<br>
+<br>
+
+<div class="panel panel-primary">
+	 
+<% unless @checkedOut.blank? %>
+<div class="panel-heading"><strong>Borrowed Items</strong></div>
+						<% @checkedOut.each do |chk| %>
+								<div  id="<%=chk.id%>" class="thumbnail row" style="border-color: #000000; box-shadow: 5px 5px 10px #888888;">
+							      <div class="caption col-md-6">
+							        <h3><%= chk.item.name %></h3>
+							        <%= label_tag 'Description:' %>
+							        <p><%= chk.item.description %></p>
+							        <p><% cat = chk.item.category %></p>
+							        <%= label_tag 'Category:' %>
+							        <p><%= cat.name %></p>
+							        <p>
+							        	<%= label_tag 'Subcategory:' %>
+							        	<p>
+								        	<% unless chk.item.sub_category == nil %>
+								        	<%= chk.item.sub_category.name %>
+								        	<% end %>
+							        	</p>
+							        </p>
+							        <p>
+							        	<%= label_tag 'Tags:' %>
+							        	<% chk.item.tags.each do |s| %>
+											<span class="label label-info"><%= s.name %></span>
+										<% end %>
+							        </p>
+							        <p>
+							        	<strong>Return Date</strong>
+							          	<%= chk.deadline_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>
+							        </p>
+							    </div>
+							    <div class="">
+							      <%= image_tag chk.item.photo_url.to_s %>
+							  	</div>
+							</div>
+						<% end %>		
+
+<% else %>
+<div class="panel-heading"><strong>No Borrowed Items</strong></div>
+<% end %>
+</div>

@@ -1,0 +1,18 @@
+
+<tr id="record<%=category.id%>">
+  <td><%= category.name %></td>
+  <td><%= category.description %></td>
+
+  <td>
+    <%= render partial: 'categories/form' , locals: {ncategory: category, formid: "form-edit#{category.id}", newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=category.id%>">Edit</button>
+  </td>
+
+  <td>
+  	<% if category.items.count == 0 %>
+    <%= button_to 'Delete', category, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
+    <% else %>
+    <%= button_to "Cannot Delete, #{category.items.count} items linked", category, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger disabled btn-block" %>
+    <% end %>
+  </td>
+</tr>

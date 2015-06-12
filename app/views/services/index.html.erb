@@ -1,0 +1,61 @@
+<h1>Manage Services</h1>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+
+    <li role="presentation"  class="active">
+      <a href="#crud" aria-controls="crud" role="tab" data-toggle="tab">Create & edit Services</a>
+    </li>
+
+    <li role="presentation" >
+      <a href="#srchitem" aria-controls="srchitem" role="tab" data-toggle="tab">Search for a Service</a>
+    </li>
+
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="crud">
+      <%= render partial: 'services/list_table_services' , locals: { services: @services, nservice: @nservice } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="srchitem">
+
+      <div class="form-group">
+
+             <div class="input-group btn-group">
+
+                <%= form_tag(services_get_service_path, method: "get", remote: true, id: "crud-srch") do %>
+                    
+                    <div class="btn-group">
+                      <div class="btn-group">
+                          <%= text_field_tag(:servname, nil,class: "form-control", placeholder: "service name") %>
+                      </div>
+
+                      <div class="btn-group">
+                          <%= text_field_tag(:servsubname, nil,class: "form-control", placeholder: "sub service name") %>
+                      </div>
+                      
+                      <div class="btn-group">             
+                          <%= submit_tag("Get service!",class: "btn btn-default")%>
+                      </div>
+                    
+                    </div>
+
+                <% end %>
+
+              </div>
+          </div>
+
+      <div id="srchSerPos">
+      </div>
+
+    </div>
+    
+  </div>
+
+</div>
+

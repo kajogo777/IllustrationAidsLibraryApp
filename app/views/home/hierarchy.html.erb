@@ -1,0 +1,77 @@
+<blockquote>
+<h1> Illustration Aids </h1>
+<p id="verse"></p>
+<footer ><cite id="author"></cite></footer>
+</blockquote>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+		<% unless @cathierarchy == nil %>
+			<% @cathierarchy.each do |cat| %>
+			<% unless cat.items.empty? %>
+				<div class="panel panel-default">
+					<div class="panel-heading catheads" role="tab" id="heading<%=cat.id%>">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#cat<%=cat.id%>" aria-expanded="true" aria-controls="cat<%=cat.id%>">
+				          <%= cat.name %>	<span class="badge"><%= cat.items.count %> items</span>
+				        </a>
+				      </h4>
+				    </div>
+
+					<% unless cat.sub_categories == nil %>
+
+					<div id="cat<%=cat.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%=cat.id%>">
+      				<div class="list-group">
+
+						<% cat.sub_categories.each do |subcat| %>
+						<% unless subcat.items.empty? %>
+						<div class="panel panel-default toc">
+							<div class="panel-heading subcatheads" role="tab" id="headings<%=subcat.id%>">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#subcat<%=subcat.id%>" aria-expanded="true" aria-controls="subcat<%=subcat.id%>">
+						          <%= subcat.name %>	<span class="badge"><%= subcat.items.count %> items</span>
+						        </a>
+						      </h4>
+						    </div>
+
+						    <div id="subcat<%=subcat.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headings<%=subcat.id%>">
+	      					<div class="list-group">
+								<% unless subcat.items == nil %>
+									<%= render partial: 'home/listitems' , locals: { items: subcat.items } %>
+								<% end %>
+							</div>
+							</div>
+						</div>
+						<% end %>
+						<% end %>
+
+						<% others = cat.items.where(sub_category: nil) %>
+						<% unless others.empty? %>
+						<div class="panel panel-default toc">
+							<div class="panel-heading subcatheads" role="tab" id="headingso<%=cat.id%>">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#cato<%=cat.id%>" aria-expanded="true" aria-controls="cato<%=cat.id%>">
+						          Other items 	<span class="badge"><%= others.count %> items</span>
+						        </a>
+						      </h4>
+						    </div>
+
+						    <div id="cato<%=cat.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingo<%=cat.id%>">
+	      					<div class="list-group">
+
+								<%= render partial: 'home/listitems' , locals: { items: others } %>
+
+							</div>
+							</div>
+						</div>
+						<% end %>
+
+					</div>
+					</div>
+					<% end %>
+				</div>
+			<% end %>
+			<% end %>
+		<% end %>
+
+</div>

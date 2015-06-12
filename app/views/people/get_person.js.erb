@@ -1,0 +1,7 @@
+
+<% unless @cur_person == nil %>
+	$("#srchPersonPos").html("<%= escape_javascript(render partial: 'people/mperson', locals: { person:  @cur_person, serv: @services } ) %>"); 
+<% else %>
+	$("#srchPersonPos").empty(); 
+	$("#srchPersonPos").append("<div class='panel panel-danger'><div class='panel-heading'><div class='panel-title'>Not Enough Criteria To Find A Unique Servant Please Enter More Information!</div></div></div>");
+<% end %>

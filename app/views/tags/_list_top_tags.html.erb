@@ -1,0 +1,22 @@
+
+<% unless tags == nil %>
+
+	<% tags.in_groups_of(4,false).each do |group| %>
+		<div class="row">
+			<% group.each do |tag| %>
+				<div class="col-sm-6 col-md-3">
+				    <div class="thumbnail">
+				    	<span class="badge"><%= tag.checkins_count %> Check ins</span> 
+				      <div class="caption">
+				        <h3><%= tag.name %></h3>
+				      </div>
+				    </div>
+			  	</div>
+		  <% end %>
+		</div>
+	<% end %>
+<% else %>
+
+emptyyyyyy
+
+<% end %>

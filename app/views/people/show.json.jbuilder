@@ -1,0 +1,1 @@
+json.extract! @person, :id, :nationalid, :birth_date, :first_name, :middle_name, :last_name, :addressA, :addressB, :addressC, :addressD, :phone_number, :mobile_number1, :mobile_number2, :role_id, :created_at, :updated_at
