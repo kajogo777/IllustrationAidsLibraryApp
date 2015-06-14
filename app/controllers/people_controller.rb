@@ -59,8 +59,8 @@ class PeopleController < ApplicationController
 
       user = User.new
       user.person = @person
-      user.username = @person.first_name + '.' + @person.middle_name + '.' + @person.last_name
-      user.password = user.password_confirmation = @person.first_name + '.' + @person.middle_name + '777'
+      user.username = @person.first_name.downcase + '.' + @person.middle_name.downcase + '.' + @person.last_name.downcase
+      user.password = user.password_confirmation = @person.first_name.downcase + '.' + @person.middle_name.downcase + '777'
       user.email = user.username + '@stmarychurch.com'
       user.save
 
