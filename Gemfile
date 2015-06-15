@@ -42,7 +42,7 @@ gem 'rmagick'
 gem 'prawn'
 gem 'cocoon'
 gem 'devise'
-gem 'puma'
+#gem 'puma'
 
 group :production do
 
