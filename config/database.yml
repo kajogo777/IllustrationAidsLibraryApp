@@ -13,6 +13,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+<<<<<<< HEAD
+=======
+  username: stmaryapp
+  password: 7654321
+>>>>>>> c4276a6a927999c1605104f66f083cba5667363d
   #socket: /var/run/mysqld/mysqld.sock
 
 development:
