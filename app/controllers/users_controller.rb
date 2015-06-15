@@ -1,6 +1,7 @@
 
 class UsersController < ApplicationController
 before_action :authenticate_user!
+before_action :role_user?
 
 	def ureserve
 		itemid = params[:resitemid].to_i
@@ -40,6 +41,14 @@ before_action :authenticate_user!
 	end
 
 	private
+
+	def role_user?
+		if current_user.person.role.name == "Admin" || current_user.person.role.name == "SuperAdmin"
+			flash[:alert] = "You Are an Admin you Cannot reserve or request!"
+
+        	redirect_to root_path
+        end
+	end
 
 	def get_deadline_time(mo2tamar)
 
