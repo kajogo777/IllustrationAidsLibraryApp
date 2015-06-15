@@ -13,6 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20150610215254) do
 
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
