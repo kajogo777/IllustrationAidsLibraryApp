@@ -80,6 +80,14 @@
 
           <br>
 
+          <div class="field">
+            <%= label_tag "Services" %>
+            <br>
+            <%= f.collection_select :service_ids, Service.all, :id, :serv_name, {}, {:multiple => true, class: "input-lg"} %>
+          </div>
+
+          <br>
+
           <% if current_user.person.role.name != "SuperAdmin" && nperson.role != nil && (nperson.role.name == "Admin" || nperson.role.name == "SuperAdmin") %>
 
           <% else%>

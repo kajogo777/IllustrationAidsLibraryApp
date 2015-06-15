@@ -5,6 +5,10 @@ class Service < ActiveRecord::Base
 
 	has_and_belongs_to_many :people
 
+	def serv_name
+		self.name + " " + self.sub_name
+	end
+
 	private
 
 	def check_serv
