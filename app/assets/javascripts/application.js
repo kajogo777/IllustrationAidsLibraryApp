@@ -35,6 +35,7 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= bootstrap-tokenfield
+//= tokenfield
 //= require cocoon
   
   $(document).ready(function(){
