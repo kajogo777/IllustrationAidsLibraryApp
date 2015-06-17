@@ -34,8 +34,6 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
-//= require bootstrap-tokenfield
-//= require tokenfield
 //= require cocoon
   
   $(document).ready(function(){
