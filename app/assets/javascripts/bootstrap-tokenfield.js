@@ -1,3 +1,5 @@
+ jQuery( document ).ready(function( $ ) {
+
 /*!
  * bootstrap-tokenfield
  * https://github.com/sliptree/bootstrap-tokenfield
@@ -1036,3 +1038,5 @@
   return Tokenfield;
 
 }));
+
+});
