@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
+		@tags = Tag.all.map{|x| x.name}
 	end
 
 	def hierarchy
