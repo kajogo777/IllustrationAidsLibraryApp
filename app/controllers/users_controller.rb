@@ -30,6 +30,10 @@ before_action :role_user?
 		req.save
 	end
 
+	def requests
+		@requests = Request.where(person_id: get_person.id)
+	end
+
 	def check_outs
 		@reserved = CheckOut.where(person_id: get_person.id, released: false)
 		@checkedOut = CheckOut.where(person_id: get_person.id, released: true)

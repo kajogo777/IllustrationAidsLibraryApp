@@ -1,0 +1,70 @@
+<h1>Requests</h1>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <% unless @requests.blank? %>
+
+    <% @requests.each do |req| %>
+      <div id="pnl<%=req.id%>" class="panel panel-default">
+
+        <div class="panel-heading" role="tab" id="<%=req.id%>">
+
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
+            </a>
+            <span class="pull-right"><%= req.created_at %></span>
+          </h4>
+        </div>
+
+        <div id="collapse<%=req.id%>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%=req.id%>">
+
+          <div class="panel-body">
+            <% unless req.item == nil %>
+            About item:
+            <br>
+            <div class="thumbnail">
+              <%= image_tag req.item.photo_url.to_s %>
+              <div class="caption">
+                <%= label_tag 'Item ID:' %>
+                <p><%= req.item.id %></p>
+                <%= label_tag 'Description:' %>
+                <p><%= req.item.description %></p>
+                <p><% cat = req.item.category %></p>
+                <%= label_tag 'Category:' %>
+                <p><%= cat.name %></p>
+                <p>
+                  <%= label_tag 'Subcategory:' %>
+                  <p>
+                    <% unless req.item.sub_category == nil %>
+                    <%= req.item.sub_category.name %>
+                    <% end %>
+                  </p>
+                </p>
+                <p>
+                  <%= label_tag 'Tags:' %>
+                  <% req.item.tags.each do |s| %>
+                <span class="label label-info"><%= s.name %></span>
+                <% end %>
+                </p>
+              </div>
+              </div>
+            <br>
+            <% end %>
+            <%= req.description %>
+            <br>
+            <br>
+            <%= button_to "Delete Request", req, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block del-request" %>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+
+  <% else %>
+
+  <div class="alert alert-info" role="alert">Currently No Requests are pending!</div>
+
+  <% end %>
+
+</div>
