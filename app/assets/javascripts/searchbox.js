@@ -10,6 +10,8 @@
               }
             });
 
+      autocom = ['king','queen','fish'];
+
       $('#tokenfield-typeahead').tokenfield({
         autocomplete:
               { minLength: 2,   
