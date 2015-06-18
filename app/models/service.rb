@@ -6,7 +6,7 @@ class Service < ActiveRecord::Base
 	has_and_belongs_to_many :people
 
 	def serv_name
-		self.name + " " + self.sub_name
+		self.name.to_s + " " + self.sub_name.to_s
 	end
 
 	private
