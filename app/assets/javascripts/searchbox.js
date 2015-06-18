@@ -2,13 +2,13 @@
   $(document).ready(function(){
       
       var autocom = [];
-      $.ajax({
-              url: $("#tokenfield-typeahead").attr('linktotags'),
-              dataType: "json",
-              success: function( data ) {
-                autocom = data;
-              }
-            });
+      // $.ajax({
+      //         url: $("#tokenfield-typeahead").attr('linktotags'),
+      //         dataType: "json",
+      //         success: function( data ) {
+      //           autocom = data;
+      //         }
+      //       });
 
       autocom = ['king','queen','fish'];
 
