@@ -1,7 +1,7 @@
 
   $(document).ready(function(){
       
-      var autocom = [];
+      // var autocom = [];
       // $.ajax({
       //         url: $("#tokenfield-typeahead").attr('linktotags'),
       //         dataType: "json",
@@ -10,22 +10,21 @@
       //         }
       //       });
 
-      autocom = ['king','queen','fish'];
 
       $('#tokenfield-typeahead').tokenfield({
         autocomplete:
               { minLength: 2,   
                 source: function(request, response) {
-                  var value = request.term.toLowerCase();
-                  var result = [];
-                  for(var i = 0; i < autocom.length; i++)
-                  {
-                    if( autocom[i].search(value) > -1)
-                    {
-                      result.push(autocom[i]);
-                    }
-                  }
-                  response(result);
+                  $.ajax({
+                          url: $("#tokenfield-typeahead").attr('linktotags'),
+                          dataType: "json",
+                          data: {
+                            req: request.term
+                          },
+                          success: function( data ) {
+                            response( data );
+                          }
+                        });
                 } 
               },showAutocompleteOnFocus: true
         });
@@ -39,13 +38,13 @@
               event.preventDefault();
           });
 
-          var exists = true;
-          $.each(autocom, function(index, token) {
-            if (token === event.attrs.value)
-              exists = false;
-          });
-          if(exists === true)
-            event.preventDefault();
+          // var exists = true;
+          // $.each(autocom, function(index, token) {
+          //   if (token === event.attrs.value)
+          //     exists = false;
+          // });
+          // if(exists === true)
+          //   event.preventDefault();
 
         });
 

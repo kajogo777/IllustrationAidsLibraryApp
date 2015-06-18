@@ -38,8 +38,10 @@ class HomeController < ApplicationController
 
 	def get_tag_names
 
-		tags = Tag.all.map{|x| x.name}
-		render json: tags
+		str = params[:req]
+
+		tags = Tag.order(:name).where("name ILIKE ?", "%#{str}%")
+		render json: tags.map(&:name)
 	end
 
 	def update_subcategories
