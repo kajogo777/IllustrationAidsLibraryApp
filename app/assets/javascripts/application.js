@@ -9,7 +9,7 @@
 //= require cocoon
   
   $(document).ready(function(){
-      
+      $.material.init();
       
       $("#search-cat li a").on("click",(function(){
 
