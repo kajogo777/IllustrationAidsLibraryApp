@@ -3,7 +3,26 @@
     background-color: #FFFFFF !important;
 }
 
-.toc {
-	    border-radius: 0px !important;
+.tokenfield .token {
+	background-color: transparent;
+	  border: 1px solid #FFFFFF;
+	    vertical-align: sub;
+	      margin: -1px 5px 5px 0px;
+}
+
+::-webkit-input-placeholder {
+   color: #f0f0f0;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #f0f0f0;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #f0f0f0;  
+}
+
+:-ms-input-placeholder {  
+   color: #f0f0f0;  
 }
 

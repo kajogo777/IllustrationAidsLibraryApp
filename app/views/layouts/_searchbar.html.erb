@@ -1,18 +1,19 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-material-red-400" style="margin-top: -20px;">
   <div class="container-fluid">
-  	<div class="navbar-header">
+  	
   		<div class="navbar-form" role="search">
-        <div class="form-group">
 
-           <div class="input-group btn-group">
+        <div class="form-group form-group-material-grey-50">
+
+           <div class="input-group">
 
               <%= form_tag(home_search_path, method: "get") do %>
                   <%= hidden_field_tag(:cat, nil, id: "cat-hidden") %>
                   <%= hidden_field_tag(:subcat, nil, id: "subcat-hidden") %>
-                  <div class="btn-group">
                   
-                    <div class="btn-group">
-                      <button id="b1" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <span class="btn-group">
+                    <span class="btn-group">
+                      <button id="b1" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="color: #ffffff">
                         Category
                       </button>
                       <ul id="search-cat"class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -22,20 +23,22 @@
                           <li role="presentation" ><a value="<%=c.id%>" role="menuitem" tabindex="-1"><%=c.name%></a></li>
                         <% end %>
                       </ul>
-                    </div>
+                    </span>
 
-                    <div id="locationbtsub" class="btn-group" linktosub="<%= home_update_subcategories_path %>">
-                    </div>
+                    <span id="locationbtsub" class="btn-group" linktosub="<%= home_update_subcategories_path %>">
+                    </span>
                   
-                    <div class="btn-group">
-                        <%= text_field_tag(:stags, nil,class: "form-control", placeholder: "search", linktotags: home_get_tag_names_path, id: "tokenfield-typeahead") %>
-                    </div>
+                    <span class="btn-group">
+                        <%= text_field_tag(:stags, nil,class: "form-control ",placeholder: "search", linktotags: home_get_tag_names_path, id: "tokenfield-typeahead") %>
+                    </span>
+
+                  </span>
                     
-                    <div class="btn-group">             
-                        <%= submit_tag("Search",class: "b0 btn btn-default")%>
-                    </div>
+                    <span class="btn-group">             
+                        <%= submit_tag("Search",class: "b0 btn btn-material-grey-50")%>
+                    </span>
                   
-                  </div>
+                  
 
               <% end %>
 
@@ -43,6 +46,6 @@
 
         </div>
   	</div>
-  </div>
+  
   </div>
 </nav>

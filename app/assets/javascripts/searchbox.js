@@ -28,7 +28,7 @@
                 } 
               },showAutocompleteOnFocus: true
         });
-
+      
 
       $('#tokenfield-typeahead').on('tokenfield:createtoken', function (event) {
 

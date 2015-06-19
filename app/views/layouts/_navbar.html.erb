@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-material-red-400">
   <div class="container-fluid">
     
     <div class="navbar-header">
@@ -23,48 +23,6 @@
         <li><a href="<%=  users_requests_path %>" class="n0">My Requests</a></li>
         
       </ul>
-
-      <div class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-
-           <div class="input-group btn-group">
-
-              <%= form_tag(home_search_path, method: "get") do %>
-                  <%= hidden_field_tag(:cat, nil, id: "cat-hidden") %>
-                  <%= hidden_field_tag(:subcat, nil, id: "subcat-hidden") %>
-                  <div class="btn-group">
-                  
-                    <div class="btn-group">
-                      <button id="b1" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        Category
-                      </button>
-                      <ul id="search-cat"class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-
-                        <li role="presentation"><a  value="0" role="menuitem" tabindex="-1">All categories</a></li>
-                        <% Category.all.each do |c| %>
-                          <li role="presentation" ><a value="<%=c.id%>" role="menuitem" tabindex="-1"><%=c.name%></a></li>
-                        <% end %>
-                      </ul>
-                    </div>
-
-                    <div id="locationbtsub" class="btn-group" linktosub="<%= home_update_subcategories_path %>">
-                    </div>
-                  
-                    <div class="btn-group">
-                        <%= text_field_tag(:stags, nil,class: "form-control", placeholder: "search", linktotags: home_get_tag_names_path, id: "tokenfield-typeahead") %>
-                    </div>
-                    
-                    <div class="btn-group">             
-                        <%= submit_tag("Search",class: "b0 btn btn-default")%>
-                    </div>
-                  
-                  </div>
-
-              <% end %>
-
-            </div>
-        </div>
-      </div>
 
       <ul class="nav navbar-nav navbar-right">
 
@@ -112,3 +70,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<%= render partial: 'layouts/searchbar'%>
