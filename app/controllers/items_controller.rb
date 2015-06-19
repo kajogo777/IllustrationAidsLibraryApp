@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_filter :set_tags
   before_action :authenticate_user!
   before_action :is_admin?
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_filter :set_tags
 
   def index
 

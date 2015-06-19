@@ -9,7 +9,7 @@
   <td><%= item.sub_category.name unless item.sub_category == nil%></td>
 
   <td>
-    <button class="btn btn-default pull-right active btn-block" data-toggle="popover" data-img="<%= item.photo_url.to_s if item.photo?%>">Show</button>
+    <button class="btn btn-default pull-right active btn-block" data-toggle="popover" data-img="<%= item.photo_url.to_s if item.photo?%>" data-placement="left">Show</button>
   </td>
 
   <td>

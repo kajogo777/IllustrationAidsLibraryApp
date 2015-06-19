@@ -1,10 +1,10 @@
 
 <% unless items == nil %>
 
-	<% items.in_groups_of(4,false).each do |group| %>
+	<% items.in_groups_of(3,false).each do |group| %>
 		<div class="row">
 			<% group.each do |item| %>
-				<div class="col-sm-6 col-md-3">
+				<div class="col-sm-6 col-md-4">
 				    <div class="thumbnail">
 				      <%= image_tag item.photo_url.to_s %>
 				      <div class="caption">
@@ -33,10 +33,11 @@
 			                  
 			                  <div class="thumbnail" >
 
-			                  	<div>
-			                    	Mo2tamar
-    								<%= check_box_tag "mo2tamar", "ok", class: "checkbox" %>                  
-			                    </div>
+			                  	<div class="checkbox">
+				                    <label>
+				                        <input type="checkbox" name="mo2tamar" id="mo2tamar" value="ok"> Mo2tamar
+				                    </label>
+				                </div>
 			                    
 			                    <div >   
 			                    	<% if item.check_out == nil   %>       

@@ -83,7 +83,7 @@
           <div class="field">
             <%= label_tag "Services" %>
             <br>
-            <%= f.collection_select :service_ids, Service.all, :id, :serv_name, {}, {:multiple => true, class: "input-lg"} %>
+            <%= f.collection_select :service_ids, @services, :id, :serv_name, {}, {:multiple => true, class: "input-lg"} %>
           </div>
 
           <br>

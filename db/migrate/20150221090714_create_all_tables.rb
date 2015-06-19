@@ -109,6 +109,7 @@ create_table :services do |t|
 
       t.timestamps null: false
 end
+add_index :services , [:name, :sub_name] ,unique: true
 
 create_table :sub_categories do |t|
 

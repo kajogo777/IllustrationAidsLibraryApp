@@ -12,7 +12,7 @@ $("#notice-location-form").append("<div class='panel' id='notice'><div class='pa
 	
 <% else %>
 
-	$("#mytable").prepend("<%=escape_javascript(render partial: 'people/record' , locals: {person: @person})%>");
+	$("#mytable").prepend("<%=escape_javascript(render partial: 'people/record' , locals: {allservices: @allservices,person: @person})%>");
 	$("#noticeh").append("<%= @str %>");
 	//window.location.reload();
 

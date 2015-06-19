@@ -44,6 +44,9 @@ before_action :role_user?
 		CheckOut.destroy(@checkid)
 	end
 
+	def show
+	end
+	
 	private
 
 	def role_user?

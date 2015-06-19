@@ -16,22 +16,30 @@
 
 <br><br>
 
-<div class="table-responsive">
-  <table class="table table-hover table-condensed">
-    <thead>
-      <tr>
+<div>
         <strong>Sort By: </strong>
+        <div class="btn-group">
           <span class="btn btn-default" ><%= sortable 'addressA','Address A', people_path %></span>
           <span class="btn btn-default" ><%= sortable 'addressB','Address B', people_path %></span> 
           <span class="btn btn-default" ><%= sortable 'addressC','Address C', people_path %></span> 
           <span class="btn btn-default" ><%= sortable 'addressD','Address D', people_path %></span>
+        </div>
+        <div class="btn-group">
           <span class="btn btn-default" ><%= sortable 'first_name','First Name', people_path %></span> 
           <span class="btn btn-default" ><%= sortable 'middle_name','Middle Name', people_path %></span>
           <span class="btn btn-default" ><%= sortable 'last_name','Last Name', people_path %></span> 
+        </div>
+        <div class="btn-group">
           <span class="btn btn-default" ><%= sortable 'mobile_number1','Mobile Number', people_path %></span>
           <span class="btn btn-default" ><%= sortable 'mobile_number2','Mobile Number2', people_path %></span>
           <span class="btn btn-default" ><%= sortable 'phone_number','Phone Number', people_path %></span> 
-      </tr>
+        </div>
+      </div>
+<br>
+
+<div class="table-responsive">
+  <table class="table table-hover table-condensed">
+    <thead>
 
       <tr>
         <th><%= sortable 'nationalid','National ID', people_path %></th>

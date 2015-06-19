@@ -20,6 +20,7 @@ class Person < ActiveRecord::Base
 	has_many :items ,through: :check_outs
 	has_many :check_ins
 	has_many :requests
+	has_one :user
 
 	def get_full_address
 		adr = "#{addressC} #{addressB} #{addressA}"
