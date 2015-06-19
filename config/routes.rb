@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   post 'users/ureserve'
   post 'users/urequest'
-  post 'users/requests'
+  get 'users/requests'
   get 'users/cancel_check_out'
   get 'users/check_outs'
 

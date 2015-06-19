@@ -23,15 +23,15 @@ before_action :role_user?
 		itemid = params[:reqitemid].to_i
 		desc = params[:reqdesc]
 
-		req = Request.new(person_id: get_person.id, 
+		@req = Request.new(person_id: get_person.id, 
 						  item_id: itemid, 
 						  description: desc)
 
-		req.save
+		@req.save
 	end
 
 	def requests
-		@requests = Request.where(person_id: get_person.id)
+		@requests = Request.where(person_id: get_person.id).order("created_at DESC")
 	end
 
 	def check_outs
@@ -42,9 +42,6 @@ before_action :role_user?
 	def cancel_check_out
 		@checkid = params[:cancelCheckID].to_i
 		CheckOut.destroy(@checkid)
-	end
-
-	def show
 	end
 	
 	private

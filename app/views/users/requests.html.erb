@@ -7,22 +7,24 @@
     <% @requests.each do |req| %>
       <div id="pnl<%=req.id%>" class="panel panel-default">
 
-        <div class="panel-heading" role="tab" id="<%=req.id%>">
-
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
-            </a>
-            <span class="pull-right"><%= req.created_at %></span>
+        <button class="btn btn-primary btn-block" role="tab" id="<%=req.id%>" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
+          <h4>
+              <%= req.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>
           </h4>
-        </div>
+        </button>
 
         <div id="collapse<%=req.id%>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%=req.id%>">
 
           <div class="panel-body">
             <% unless req.item == nil %>
-            About item:
+            <div class="well">
+              <strong><%= req.description %></strong>
+            </div>
+
+            
             <br>
-            <div class="thumbnail">
+            <div class="thumbnail shadow-z-1">
+              <strong> About item: </strong>
               <%= image_tag req.item.photo_url.to_s %>
               <div class="caption">
                 <%= label_tag 'Item ID:' %>
@@ -50,10 +52,7 @@
               </div>
             <br>
             <% end %>
-            <%= req.description %>
-            <br>
-            <br>
-            <%= button_to "Delete Request", req, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block del-request" %>
+
           </div>
 
         </div>

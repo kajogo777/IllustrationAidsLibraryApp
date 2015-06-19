@@ -11,11 +11,11 @@
 			<% unless cat.items.empty? %>
 				<div class="panel panel-default">
 					<div class="panel-heading catheads" role="tab" id="heading<%=cat.id%>">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#cat<%=cat.id%>" aria-expanded="true" aria-controls="cat<%=cat.id%>">
+				      
+				        <button class="btn btn-flat btn-primary btn-block" data-toggle="collapse" data-parent="#accordion" href="#cat<%=cat.id%>" aria-expanded="true" aria-controls="cat<%=cat.id%>">
 				          <%= cat.name %>	<span class="badge"><%= cat.items.count %> items</span>
-				        </a>
-				      </h4>
+				        </button>
+				      
 				    </div>
 
 					<% unless cat.sub_categories == nil %>
@@ -27,11 +27,11 @@
 						<% unless subcat.items.empty? %>
 						<div class="panel panel-default toc">
 							<div class="panel-heading subcatheads" role="tab" id="headings<%=subcat.id%>">
-						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#subcat<%=subcat.id%>" aria-expanded="true" aria-controls="subcat<%=subcat.id%>">
+						      
+						        <button class="btn btn-flat btn-default btn-block" data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#subcat<%=subcat.id%>" aria-expanded="true" aria-controls="subcat<%=subcat.id%>">
 						          <%= subcat.name %>	<span class="badge"><%= subcat.items.count %> items</span>
-						        </a>
-						      </h4>
+						        </button>
+						      
 						    </div>
 
 						    <div id="subcat<%=subcat.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headings<%=subcat.id%>">
@@ -49,11 +49,11 @@
 						<% unless others.empty? %>
 						<div class="panel panel-default toc">
 							<div class="panel-heading subcatheads" role="tab" id="headingso<%=cat.id%>">
-						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#cato<%=cat.id%>" aria-expanded="true" aria-controls="cato<%=cat.id%>">
+						     
+						        <button class="btn btn-flat btn-default btn-block" data-toggle="collapse" data-parent="#heading<%=cat.id%>" href="#cato<%=cat.id%>" aria-expanded="true" aria-controls="cato<%=cat.id%>">
 						          Other items 	<span class="badge"><%= others.count %> items</span>
-						        </a>
-						      </h4>
+						        </button>
+						      
 						    </div>
 
 						    <div id="cato<%=cat.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingo<%=cat.id%>">

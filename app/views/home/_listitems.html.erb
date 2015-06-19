@@ -51,7 +51,20 @@
 
 			              <% end %>
 
-				        	<a href="#" class="btn btn-default btn-block" role="button">Request</a>
+			              <div id="request<%=item.id%>">
+
+			              	<%= form_tag(users_urequest_path(reqitemid: item.id), method: "post", remote: true) do %>
+
+					              	<div class="field"> 
+					                  <%= text_area_tag :reqdesc ,nil,class: "form-control floating-label", placeholder: "send a request to illustration aids"%>
+					                </div>
+
+					                <%= submit_tag("Request",class: "btn btn-default btn-block",id: "request"+item.id.to_s)%>
+
+			              	<% end %>
+
+			              </div>
+
 				        </p>
 				      </div>
 				    </div>

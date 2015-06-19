@@ -2,6 +2,7 @@ class Service < ActiveRecord::Base
 
 	validates :name, presence: true
 	validate :check_serv, on: :create
+	#validate :check_serv, on: :update
 
 	has_and_belongs_to_many :people
 
