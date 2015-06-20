@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'people/get_person'
   get 'people/close_new_modal'
   get 'people/get_pdf'
+  post 'people/reset_pass'
 
   get 'services/get_service'
   get 'services/close_new_modal'

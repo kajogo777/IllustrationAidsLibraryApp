@@ -144,6 +144,16 @@ class PeopleController < ApplicationController
     end
   end
 
+  def reset_pass
+
+    id = params[:per_id]
+    p = Person.find(id)
+    u = p.user
+    u.password = u.password_confirmation = p.first_name.downcase + '.' + p.middle_name.downcase + '777'
+    u.save
+    
+  end
+
   def close_new_modal
     @nperson = Person.new
   end

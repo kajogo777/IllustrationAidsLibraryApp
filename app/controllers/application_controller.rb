@@ -48,7 +48,8 @@ protected
   		unless current_user.person.role.name == "Admin" || current_user.person.role.name == "SuperAdmin"
   			flash[:alert] = "You Do Not have Access to Manage Aids!"
 
-  			redirect_to root_path
+        redirect_to root_path
+
   		end
 
   	end
@@ -58,7 +59,8 @@ protected
       unless current_user.person.role.name == "SuperAdmin"
         flash[:alert] = "You Do Not have Access to Roles!"
 
-        redirect_to root_path
+        redirect_to root_path 
+
       end
 
     end

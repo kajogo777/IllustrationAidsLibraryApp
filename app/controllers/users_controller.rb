@@ -43,6 +43,8 @@ before_action :role_user?
 		@checkid = params[:cancelCheckID].to_i
 		CheckOut.destroy(@checkid)
 	end
+
+	
 	
 	private
 

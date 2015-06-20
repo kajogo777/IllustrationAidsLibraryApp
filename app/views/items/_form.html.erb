@@ -61,10 +61,18 @@
               <% end %>
 
             </div>
+          <br>
+
+          <div class="field">
+            <%= label_tag "Location" %>
+            <br>
+            <%= f.collection_select(:location_id, Location.all, :id, :get_full_name, include_blank: 'none')%>
+          </div>
 
           <br>
           <div class="field">
             <%= label_tag "Tags" %>
+            <br>
             <%= f.collection_select :tag_ids, @tags, :id, :name, {}, {:multiple => true, class: "input-lg"} %>
           </div>
         </div>

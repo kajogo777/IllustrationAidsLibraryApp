@@ -130,6 +130,14 @@
 				</div>
 			</div>
 			<% end %>
+
+			<% if current_user.person.role.name == "SuperAdmin" %>
+				<div>
+					<%= form_tag(people_reset_pass_path(per_id: person.id), remote: true) do %>
+						<%= submit_tag("Reset Password",class: "btn btn-danger btn-block") %>
+					<% end %>
+				</div>
+			<% end %>
 	</div>
 	
 <% end %>
