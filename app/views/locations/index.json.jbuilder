@@ -1,4 +1,4 @@
-json.array!(@locations) do |location|
-  json.extract! location, :id, :loc1, :loc2, :loc3, :description
-  json.url location_url(location, format: :json)
+json.array!(@services) do |service|
+  json.extract! service, :id, :name, :sub_name
+  json.url service_url(service, format: :json)
 end

@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :set_tags
 
+  #autocomplete :tag, :name, full: true
+
   def index
 
     @topItems ||=  Item.select("items.id, items.name, items.description, items.condition, items.category_id, items.sub_category_id

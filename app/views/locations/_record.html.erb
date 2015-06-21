@@ -1,0 +1,19 @@
+
+<tr id="record<%=location.id%>">
+  <td><%= location.loc1 %></td>
+  <td><%= location.loc2 unless location.loc2 == nil%></td>
+  <td><%= location.loc3 unless location.loc2 == nil%></td>
+
+  <td>
+    <%= render partial: 'locations/form' , locals: {nlocation: location, formid: "form-edit#{location.id}", newform: false} %>
+    <button class="btn btn-info pull-right btn-block" data-toggle="modal" data-target="#form-edit<%=location.id%>">Edit</button>
+  </td>
+
+  <td>
+  	<% if location.items.count == 0 %>
+    <%= button_to 'Delete', location, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
+    <% else %>
+    <%= button_to "Cannot Delete, #{location.items.count} items in this location", location, remote: true, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger disabled btn-block" %>
+    <% end %>
+  </td>
+</tr>

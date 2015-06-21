@@ -1,33 +1,66 @@
-<p id="notice"><%= notice %></p>
+<h1>Manage Services</h1>
 
-<h1>Listing Locations</h1>
+<div role="tabpanel">
 
-<table>
-  <thead>
-    <tr>
-      <th>Loc1</th>
-      <th>Loc2</th>
-      <th>Loc3</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
 
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.loc1 %></td>
-        <td><%= location.loc2 %></td>
-        <td><%= location.loc3 %></td>
-        <td><%= location.description %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <li role="presentation"  class="active">
+      <a href="#crud" aria-controls="crud" role="tab" data-toggle="tab">Create & edit Locations</a>
+    </li>
 
-<br>
+    <li role="presentation" >
+      <a href="#srchitem" aria-controls="srchitem" role="tab" data-toggle="tab">Search for a Location</a>
+    </li>
 
-<%= link_to 'New Location', new_location_path %>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="crud">
+      <%= render partial: 'locations/list_table_locations' , locals: { locations: @locations, nlocation: @nlocation } %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="srchitem">
+
+      <div class="form-group">
+
+             <div class="input-group btn-group">
+
+                <%= form_tag(locations_get_location_path, method: "get", remote: true, id: "crud-srch") do %>
+                    
+                    <div class="btn-group">
+                      <div class="btn-group">
+                          <%= text_field_tag(:loc1, nil,class: "form-control", placeholder: "location one") %>
+                      </div>
+
+                      <div class="btn-group">
+                          <%= text_field_tag(:loc2, nil,class: "form-control", placeholder: "location two") %>
+                      </div>
+
+                      <div class="btn-group">
+                          <%= text_field_tag(:loc3, nil,class: "form-control", placeholder: "location three") %>
+                      </div>
+                      
+                      
+                      <div class="btn-group">             
+                          <%= submit_tag("Get location!",class: "btn btn-default")%>
+                      </div>
+                    
+                    </div>
+
+                <% end %>
+
+              </div>
+          </div>
+
+      <div id="srchLocPos">
+      </div>
+
+    </div>
+    
+  </div>
+
+</div>
+

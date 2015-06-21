@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'items/get_sub'
   get 'items/close_new_modal'
   get 'items/get_pdf'
+  
 
   get 'home/search'
   get 'home/update_subcategories'
@@ -31,6 +32,10 @@ Rails.application.routes.draw do
   get 'services/get_service'
   get 'services/close_new_modal'
   get 'services/get_pdf'
+
+  get 'locations/get_location'
+  get 'locations/close_new_modal'
+  get 'locations/get_pdf'
 
   get 'roles/get_rolpeople'
   get 'roles/close_new_modal'

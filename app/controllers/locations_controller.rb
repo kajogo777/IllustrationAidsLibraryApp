@@ -1,65 +1,81 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :is_admin?
 
-  # GET /locations
-  # GET /locations.json
   def index
+
     @locations = Location.all
+    @nlocation = Location.new
+
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
-  def show
+  def get_location
+
+    loca = params[:loc1]
+    locb = params[:loc2]
+    locc = params[:loc3]
+
+    unless loca == nil || loca == ""
+      @cur_loc = Location.where(loc1: loca) 
+      @cur_loc = @cur_ser.where(loc2: locb) unless locb == nil || locb == ""
+      @cur_loc = @cur_ser.where(loc3: locc) unless locc == nil || locc == ""
+      
+      if @cur_loc.count > 1
+        @cur_loc = nil
+      else
+        @cur_loc = @cur_loc.first 
+      end
+    end
+
+      @items = @cur_loc.items unless @cur_loc.blank?
+
   end
 
-  # GET /locations/new
-  def new
-    @location = Location.new
-  end
-
-  # GET /locations/1/edit
-  def edit
-  end
-
-  # POST /locations
-  # POST /locations.json
   def create
     @location = Location.new(location_params)
 
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
-      else
-        format.html { render :new }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
+    @str = nil
+    @alert = nil
+
+    if @location.save
+      @str = 'Location was successfully created'
+      @alert = 'panel-success'
+    else
+      @str = @location.errors.full_messages
+      @alert = 'panel-danger'
+      @location = nil
     end
+
   end
 
-  # PATCH/PUT /locations/1
-  # PATCH/PUT /locations/1.json
   def update
-    respond_to do |format|
-      if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { render :show, status: :ok, location: @location }
-      else
-        format.html { render :edit }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
+    @str = nil
+    @alert = nil
+    @locid = @location.id
+
+    if @location.update(location_params)
+      @str = 'Location was successfully updated'
+      @alert = 'panel-success'
+    else
+      @str = @location.errors.full_messages
+      @alert = 'panel-danger'
+      @location = nil
     end
   end
 
-  # DELETE /locations/1
-  # DELETE /locations/1.json
+  # DELETE /services/1
+  # DELETE /services/1.json
   def destroy
-    @location.destroy
-    respond_to do |format|
-      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @locid = params[:id]
+    Location.destroy(@locid)
   end
+
+  def close_new_modal
+    @nlocation = Location.new
+  end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

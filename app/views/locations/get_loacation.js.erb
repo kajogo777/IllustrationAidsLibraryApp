@@ -1,0 +1,6 @@
+
+<% unless @cur_locs == nil %>
+	$("#srchLocPos").html("<%= escape_javascript(render partial: 'locations/mlocation', locals: { loc:  @cur_loc } ) %>"); 
+<% else %>
+	$("#srchLocPos").empty(); 
+<% end %>

@@ -1,0 +1,3 @@
+$("#create-form").empty();
+$("#create-form").append("<div class='btn-group pull-right'><%= escape_javascript(link_to 'Download Locations List', locations_get_pdf_path, :class => 'btn btn-default') %><button class='btn btn-primary' data-toggle='modal' data-target='#location-form'>Add New Location</button></div>");
+$("#create-form").append("<%= escape_javascript(render partial: 'locations/form' , locals: {nlocation: @nlocation, formid: 'location-form', newform: true})%>");
