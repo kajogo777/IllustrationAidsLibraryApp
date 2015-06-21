@@ -10,10 +10,10 @@
         <div class="panel-heading" role="tab" id="<%=req.id%>">
 
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
-              request by: <%= "  " + req.person.get_full_name %>
-            </a>
-            <span class="pull-right"><%= req.created_at %></span>
+            <button class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
+              more info
+            </button>
+            <span>At (<%= req.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>) by-- <%= "  " + req.person.get_full_name %></span>
           </h4>
         </div>
 
