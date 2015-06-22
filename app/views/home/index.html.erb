@@ -1,9 +1,10 @@
-<blockquote>
-<h1> Illustration Aids </h1>
+<blockquote class="shadow-z-4" style="background-color:#ffffff;">
+<h1 style="color: #000000;"> Illustration Aids </h1>
 <p id="verse"></p>
 <footer ><cite id="author"></cite></footer>
 </blockquote>
 
+<div class="shadow-z-4">
 <% unless @items == nil %>
 	<% unless @search_tags.count == 0 %>
 		<div class="panel panel-success">
@@ -25,6 +26,8 @@
 		</div>
 	<% end %>
 <% end %>
+</div>
+
 
 
 

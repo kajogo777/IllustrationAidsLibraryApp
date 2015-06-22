@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body style="background-image:url('../bkgrnd.jpg');">
 
 	<%= render partial: 'layouts/navbar'%>
 	<div class="row">
@@ -29,8 +29,8 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-2 alert alert-dismissable alert-material-red-400">
-				<strong>
+			<div class="col-md-2" style="color: #ffffff;">
+				<strong style="font-size: 125%;">
 						Borrowing Rules:
 						<br>
 						<% 24.times do |c|%>
@@ -46,7 +46,7 @@
 				</strong>
 			</div>
 
-			<div class="col-md-10 shadow-z-3">
+			<div class="col-md-10" >
 
 					<div id="msgmodal"></div>
 

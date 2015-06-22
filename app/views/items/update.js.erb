@@ -25,7 +25,8 @@ $("#notice-location-form-edit<%= @itmid %>").append("<div class='panel' id='noti
         }
       });
 
-	alert("<%= @str %>");
+	$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm' , locals: {str: @str})%>");
+	$("#mymodal").modal("show");
 
 	//window.location.reload();
 

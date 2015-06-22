@@ -16,7 +16,8 @@ $("#notice-location-form-edit<%= @rolid %>").append("<div class='panel' id='noti
 	$("#record<%=@role.id%>").replaceWith("<%=escape_javascript(render partial: 'roles/record' , locals: {role: @role})%>");
 	//$("#noticeh<%= @rolid %>").append("<%= @str %>");
 
-	alert("<%= @str %>");
+	$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm' , locals: {str: @str})%>");
+	$("#mymodal").modal("show");
 <% end %>
 
 

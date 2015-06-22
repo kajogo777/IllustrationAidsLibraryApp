@@ -1,6 +1,6 @@
 <h1>Manage Tags</h1>
 
-<div role="tabpanel">
+<div role="tabpanel" class="shadow-z-4" style="background-color:#ffffff;">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -20,7 +20,7 @@
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content crud-content">
 
     <div role="tabpanel" class="tab-pane active" id="crud">
       <%= render partial: 'tags/list_table_tags' , locals: { tags: @tags, ntag: @ntag } %>

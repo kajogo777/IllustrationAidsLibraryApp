@@ -22,8 +22,8 @@ $("#notice-location-form-edit<%= @perid %>").append("<div class='panel' id='noti
         trigger: 'hover'
     });
 
-	alert("<%= @str %>");
-
+	$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm' , locals: {str: @str})%>");
+	$("#mymodal").modal("show");
 <% end %>
 
 

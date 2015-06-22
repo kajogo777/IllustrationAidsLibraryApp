@@ -7,15 +7,19 @@
     <% @requests.each do |req| %>
       <div id="pnl<%=req.id%>" class="panel panel-default">
 
-        <div class="panel-heading" role="tab" id="<%=req.id%>">
 
-          <h4 class="panel-title">
-            <button class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
-              more info
-            </button>
-            <span>At (<%= req.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %>) by-- <%= "  " + req.person.get_full_name %></span>
-          </h4>
-        </div>
+
+              <button class="btn btn-primary btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=req.id%>" aria-expanded="true" aria-controls="collapse<%=req.id%>">
+                <strong> 
+                  <%= req.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %> 
+                </strong>  
+                by  
+                <strong>
+                  <%= req.person.get_full_name %>
+                </strong>
+              </button>    
+
+    
 
         <div id="collapse<%=req.id%>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%=req.id%>">
 

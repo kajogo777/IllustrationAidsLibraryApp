@@ -16,7 +16,8 @@ $("#notice-location-form-edit<%= @serid %>").append("<div class='panel' id='noti
 	$("#record<%=@service.id%>").replaceWith("<%=escape_javascript(render partial: 'services/record' , locals: {service: @service})%>");
 	//$("#noticeh<%= @serid %>").append("<%= @str %>");
 
-	alert("<%= @str %>");
+	$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm' , locals: {str: @str})%>");
+	$("#mymodal").modal("show");
 <% end %>
 
 
