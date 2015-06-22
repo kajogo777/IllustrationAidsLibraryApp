@@ -1,26 +1,36 @@
-<h2>Log in</h2>
+<div class="btn shadow-z-4 btn-block" style="background-color: #ffffff;">
+  <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, class: "form-control" %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        
+        <div class="checkbox">
+          <input name="user[remember_me]" type="hidden" value="0">
+          <label for="user_remember_me">
+          <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+          Remember me
+          </label>
+        </div>
+
+      </div>
+
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in",class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
 
 <%#= render "devise/shared/links" %>
