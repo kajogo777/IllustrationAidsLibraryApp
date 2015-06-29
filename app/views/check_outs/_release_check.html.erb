@@ -1,0 +1,12 @@
+<tr id="chk<%=checkout.id%>">
+							      	<td><%= checkout.id %></td>
+							      	<td><%= checkout.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+							      	<td><%= checkout.check_out_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+							      	<td><%= checkout.item.id %></td>
+							      	<td><%=checkout.item.location.get_full_name%></td>
+						      		<td>
+						      			<%= form_tag(check_outs_release_path(releaseCheckID: checkout.id), method: "get", remote: true) do %>
+							        	 <%= submit_tag("Release Item",class: "btn btn-default")%>
+							        	<% end %>
+						      		</td>
+						        </tr>

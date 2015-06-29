@@ -37,6 +37,7 @@ class CheckOutsController < ApplicationController
                              )
         
         @checkoutid = checkout.id
+        @loc = Item.find(itmid).location
        
         checkin.save
         CheckOut.destroy(@checkoutid)

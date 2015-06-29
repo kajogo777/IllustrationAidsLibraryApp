@@ -1,0 +1,7 @@
+<tr id="chk<%=checkout.id%>">
+							      	<td><%= checkout.id %></td>
+							      	<td><%= checkout.created_at.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+							      	<td><%= checkout.check_out_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+							      	<td><%= checkout.deadline_date.to_datetime.strftime("%a, %Y-%m-%d, %l:%M %p") %></td>
+							      	<td><%= checkout.item.id %></td>
+						        </tr>

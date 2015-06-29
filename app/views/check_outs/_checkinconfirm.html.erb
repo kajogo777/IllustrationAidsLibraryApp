@@ -11,16 +11,23 @@
 
         Item Successfully Checked In!
         <br>
-        <% unless late == nil %>
+
+        Location: <%= loc.get_full_name %>
+        <br>
+
+        <% unless late == nil && late <= 0 %>
         <strong>
           <%= fine %> pounds due, for <%= late %> days late
         </strong>
+        <br>
         <% end %>
+        
         
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        please check if the item is in good shape before checking in
+        <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
       </div>
 
     </div>

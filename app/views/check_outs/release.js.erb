@@ -1,2 +1,2 @@
-$("#<%=@checkOutRls.id%>").fadeOut(200);
-$("#out-items").prepend("<%=escape_javascript(render partial: 'check_outs/record' , locals: {chk: @checkOutRls, rel: false})%>");
+$("#chk<%=@checkOutRls.id%>").fadeOut(200);
+$("#out-items").prepend("<%=escape_javascript(render partial: 'check_outs/checked_out' , locals: {checkout: @checkOutRls})%>");

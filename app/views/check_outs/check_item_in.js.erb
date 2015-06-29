@@ -3,7 +3,7 @@
 
 $("#<%=@checkoutid%>").remove();
 
-$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'check_outs/checkinconfirm' , locals: {fine: @fine,late: @late})%>");
+$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'check_outs/checkinconfirm' , locals: {fine: @fine,late: @late,loc: @loc})%>");
 $("#mymodal").modal("show");
 
 <% end %>
