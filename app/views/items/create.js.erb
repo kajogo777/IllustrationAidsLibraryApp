@@ -24,6 +24,9 @@ $("#notice-location-form").append("<div class='panel' id='notice'><div class='pa
         }
       });
 
+	$("#msgmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm_new' , locals: {itmid: @item.id})%>");
+	$("#mymodal").modal("show");
+
 <% end %>
 
 $("#notice").addClass("<%= @alert %>");
