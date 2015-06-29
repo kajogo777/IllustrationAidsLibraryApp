@@ -8,6 +8,10 @@
           <h4 class="modal-title" id="myModalLabel">New Item!</h4>
         </div>
 
+        <% if newform %>
+          <div id="notmodal"></div>
+        <% end %>
+
 
 <%= form_for(nitem, html: { multipart: true}, remote: true) do |f| %>
 
