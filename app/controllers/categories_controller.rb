@@ -88,13 +88,13 @@ class CategoriesController < ApplicationController
   end
 
   def get_pdf
-    allCategories = Category.all
+    # allCategories = Category.all
 
-    pdf = CategoriesPdf.new(allCategories, view_context)
-    send_data pdf.render, filename: 
-    "Categories_List_#{Time.now.to_i}.pdf",
-    type: "application/pdf"
-    #disposition: inline #open in browser
+    # pdf = CategoriesPdf.new(allCategories, view_context)
+    # send_data pdf.render, filename: 
+    # "Categories_List_#{Time.now.to_i}.pdf",
+    # type: "application/pdf"
+    # #disposition: inline #open in browser
 
   end
 

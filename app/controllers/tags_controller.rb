@@ -79,13 +79,13 @@ class TagsController < ApplicationController
   end
 
   def get_pdf
-    alltags = Tag.all
+    # alltags = Tag.all
 
-    pdf = TagsPdf.new(alltags, view_context)
-    send_data pdf.render, filename: 
-    "Tags_List_#{Time.now.to_i}.pdf",
-    type: "application/pdf"
-    #disposition: inline #open in browser
+    # pdf = TagsPdf.new(alltags, view_context)
+    # send_data pdf.render, filename: 
+    # "Tags_List_#{Time.now.to_i}.pdf",
+    # type: "application/pdf"
+    # #disposition: inline #open in browser
 
   end
 
