@@ -44,6 +44,7 @@ gem 'prawn'
 gem 'cocoon'
 gem 'devise'
 gem 'puma'
+gem 'cloudinary'
 
 group :production do
 

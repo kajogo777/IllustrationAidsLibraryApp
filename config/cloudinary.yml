@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: stmaryaidscloud
+  api_key: '298359723677418'
+  api_secret: RcyvTTEr2th0jwT7T2M4crug2UU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: stmaryaidscloud
+  api_key: '298359723677418'
+  api_secret: RcyvTTEr2th0jwT7T2M4crug2UU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: stmaryaidscloud
+  api_key: '298359723677418'
+  api_secret: RcyvTTEr2th0jwT7T2M4crug2UU
+  enhance_image_tag: true
+  static_image_support: false

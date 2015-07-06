@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
 	validates :name, format: { with: /[\p{L}]{2,25}/, message: "not valid name" }, presence: true
 	validates :condition, inclusion: { in: %w(OK MAINTENANCE LOST), message: "${value} is not a valid condition, conditions are either OK , MAINTENANCE or LOST " }, presence: true
 	validates :category_id, presence: true
+	validates :location_id, presence: true
 	validates :photo, presence: true
 
 	belongs_to :category
