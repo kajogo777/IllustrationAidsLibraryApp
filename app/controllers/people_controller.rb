@@ -43,7 +43,7 @@ class PeopleController < ApplicationController
     @perid = @person.id
 
     if @person.update(person_params)
-      @str = 'Item was successfully updated'
+      @str = 'Servant was successfully updated'
       @alert = 'panel-success'
     else
       @str = @person.errors.full_messages
@@ -67,7 +67,7 @@ class PeopleController < ApplicationController
       user.email = user.username + '@stmarychurch.com'
       user.save
 
-      @str = 'Item was successfully created'
+      @str = 'Servant was successfully created'
       @alert = 'panel-success'
     else
       @str = @person.errors.full_messages
@@ -116,7 +116,7 @@ class PeopleController < ApplicationController
 
     @checkOuts = nil
     @lateCheckOuts = nil
-    @topItems = nil
+    @topServants = nil
 
     unless @cur_person == nil
       
@@ -125,7 +125,7 @@ class PeopleController < ApplicationController
       @lateCheckOuts = @checkOuts.where("deadline_date < ?",Time.zone.now)
       @lateCheckIns = CheckIn.where("person_id = ? AND on_deadline = ?", @cur_person.id, false)
       
-      @topItems =  Item.select("items.id, items.name, items.description, items.condition, items.category_id, items.sub_category_id
+      @topServants =  Servant.select("items.id, items.name, items.description, items.condition, items.category_id, items.sub_category_id
                         , count(check_ins.id) AS check_ins_count")
                         .joins(people: :check_ins).where(check_ins: {person: @cur_person}).group("items.id")
                         .order("check_ins_count DESC").limit(10)
