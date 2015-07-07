@@ -9,11 +9,27 @@ protected
 
     def manage_super_admin
       sadmin = Role.find_by(name: "SuperAdmin")
+      admin = Role.find_by(name: "Admin")
+      usr = Role.find_by(name: "User")
 
       if sadmin.blank?
 
         sadmin = Role.new(name: "SuperAdmin", description: "Full Access")
         sadmin.save
+
+      end
+
+      if admin.blank?
+
+        admin = Role.new(name: "Admin", description: "Admin Access")
+        admin.save
+
+      end
+
+      if usr.blank?
+
+        usr = Role.new(name: "User", description: "reservation and requests")
+        usr.save
 
       end
 
