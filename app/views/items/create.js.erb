@@ -24,8 +24,21 @@ $("#notice-location-form").append("<div class='panel' id='notice'><div class='pa
         }
       });
 
+
 	$("#notmodal").replaceWith("<%=escape_javascript(render partial: 'layouts/confirm_new' , locals: {itmid: @item.id})%>");
 	$("#mynotmodal").modal("show");
+
+	$(".create-form-close").on("click",(function(){
+
+        if( $('#notice-location-form').find('#notice').length )
+        {
+          $.ajax({
+            url: $("#create-form").attr('linkto'),
+            dataType: "script"
+          });
+        }
+
+      }));
 
 <% end %>
 

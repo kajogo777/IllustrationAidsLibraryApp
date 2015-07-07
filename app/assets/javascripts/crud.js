@@ -31,5 +31,17 @@ $(document).ready(function(){
         }    
     });
 
+    $(".create-form-close").on("click",(function(){
+
+        if( $('#notice-location-form').find('#notice').length )
+        {
+          $.ajax({
+            url: $("#create-form").attr('linkto'),
+            dataType: "script"
+          });
+        }
+
+      }));
+
 
 });
