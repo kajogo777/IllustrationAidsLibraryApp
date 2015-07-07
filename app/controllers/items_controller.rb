@@ -96,13 +96,13 @@ class ItemsController < ApplicationController
   end
 
   def get_pdf
-    # allItems = Item.all
+    allItems = Item.all
 
-    # pdf = ItemsPdf.new(allItems, view_context)
-    # send_data pdf.render, filename: 
-    # "Items_List_#{Time.now.to_i}.pdf",
-    # type: "application/pdf"
-    # #disposition: inline #open in browser
+    pdf = ItemsPdf.new(allItems, view_context)
+    send_data pdf.render, filename: 
+    "Items_List_#{Time.now.to_i}.pdf",
+    type: "application/pdf"
+    #disposition: inline #open in browser
   end
 
   private

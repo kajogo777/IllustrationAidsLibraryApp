@@ -159,13 +159,13 @@ class PeopleController < ApplicationController
   end
 
   def get_pdf
-    # allPeople = Person.all
+    allPeople = Person.all
 
-    # pdf = PeoplePdf.new(allPeople, view_context)
-    # send_data pdf.render, filename: 
-    # "Servants_List_#{Time.now.to_i}.pdf",
-    # type: "application/pdf"
-    # #disposition: inline #open in browser
+    pdf = PeoplePdf.new(allPeople, view_context)
+    send_data pdf.render, filename: 
+    "Servants_List_#{Time.now.to_i}.pdf",
+    type: "application/pdf"
+    #disposition: inline #open in browser
   end
 
   private
