@@ -92,15 +92,15 @@ class PeopleController < ApplicationController
     end
      
     unless (search_namef == nil || search_namef == "")
-      @cur_person =  @cur_person.where(first_name: search_namef)
+      @cur_person =  @cur_person.where("lower(first_name) = ?", search_namef.downcase)
     end
 
     unless (search_namem == nil || search_namem == "")
-      @cur_person =  @cur_person.where(middle_name: search_namem)
+      @cur_person =  @cur_person.where("lower(middle_name) = ?", search_namem.downcase)
     end
 
     unless (search_namel == nil || search_namel == "")
-      @cur_person =  @cur_person.where(last_name: search_namel)
+      @cur_person =  @cur_person.where("lower(last_name) = ?", search_namel.downcase)
     end
 
     unless (search_mob == nil || search_mob == "")
@@ -125,7 +125,7 @@ class PeopleController < ApplicationController
       @lateCheckOuts = @checkOuts.where("deadline_date < ?",Time.zone.now)
       @lateCheckIns = CheckIn.where("person_id = ? AND on_deadline = ?", @cur_person.id, false)
       
-      @topServants =  Servant.select("items.id, items.name, items.description, items.condition, items.category_id, items.sub_category_id
+      @topServants =  Person.select("items.id, items.name, items.description, items.condition, items.category_id, items.sub_category_id
                         , count(check_ins.id) AS check_ins_count")
                         .joins(people: :check_ins).where(check_ins: {person: @cur_person}).group("items.id")
                         .order("check_ins_count DESC").limit(10)
