@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150610215254) do
     t.integer  "sub_category_id"
     t.integer  "location_id"
     t.string   "photo"
+    t.string   "customid"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -126,6 +127,8 @@ ActiveRecord::Schema.define(version: 20150610215254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "services", ["name", "sub_name"], name: "index_services_on_name_and_sub_name", unique: true, using: :btree
 
   create_table "sub_categories", force: :cascade do |t|
     t.string   "name"

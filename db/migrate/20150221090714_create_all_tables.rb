@@ -41,6 +41,7 @@ create_table :items do |t|
       t.integer :sub_category_id
       t.integer :location_id
       t.string :photo
+      t.string :customid
 
       t.timestamps null: false
 end
