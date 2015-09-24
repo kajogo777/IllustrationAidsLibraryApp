@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:photo, :name, :description, :cost, :condition, :category_id, :sub_category_id, :location_id, tag_ids: [])
+      params.require(:item).permit(:photo, :name, :description, :cost, :condition, :category_id, :sub_category_id, :location_id, :customid, tag_ids: [])
     end
 
     def set_tags
