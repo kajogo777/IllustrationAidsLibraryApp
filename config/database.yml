@@ -13,7 +13,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: stmaryapp
+  username: stmaryre_mediausr
   password: 7654321
   #socket: /var/run/mysqld/mysqld.sock
 
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: testModVal_production
-  username: testModVal
-  password: <%= ENV['TESTMODVAL_DATABASE_PASSWORD'] %>
+  database: stmaryre_media
+  username: stmaryre_mediausr
+  password: @stmaryre_mediausr
